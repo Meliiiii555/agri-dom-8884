@@ -282,7 +282,6 @@ export function ProcedureSearchSection() {
     data: popularItems,
     itemsPerPage: 10
   });
-    },
     {
       query: "Permis de conduire",
       count: "18,901 recherches", 

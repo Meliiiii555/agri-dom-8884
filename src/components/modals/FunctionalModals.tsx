@@ -29,10 +29,11 @@ interface DocumentViewModalProps {
 }
 
 export function DocumentViewModal({ isOpen, onClose, document }: DocumentViewModalProps) {
+  const [currentView, setCurrentView] = useState<'content' | 'metadata' | 'history'>('content');
+  
   if (!document) {
     return null;
   }
-  const [currentView, setCurrentView] = useState<'content' | 'metadata' | 'history'>('content');
 
   const sampleContent = `JOURNAL OFFICIEL DE LA REPUBLIQUE ALGERIENNE N° ${Math.floor(Math.random() * 100) + 1}
 
@@ -147,11 +148,12 @@ interface DownloadModalProps {
 }
 
 export function DownloadModal({ isOpen, onClose, document }: DownloadModalProps) {
+  const [format, setFormat] = useState('pdf');
+  const [isDownloading, setIsDownloading] = useState(false);
+  
   if (!document) {
     return null;
   }
-  const [format, setFormat] = useState('pdf');
-  const [isDownloading, setIsDownloading] = useState(false);
 
   const handleDownload = async () => {
     setIsDownloading(true);

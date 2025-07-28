@@ -180,7 +180,7 @@ class AlgerianOCRService {
       console.log('🔍 Traitement OCR document algérien...');
       
       // Détermine la langue à utiliser
-      let targetLanguage = options.language || 'auto';
+      const targetLanguage = options.language || 'auto';
       
       // Si auto-détection, commence par le français (langue principale en Algérie)
       const worker = this.workers.get(targetLanguage === 'auto' ? 'fra' : targetLanguage);

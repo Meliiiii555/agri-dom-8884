@@ -369,7 +369,7 @@ export function FunctionalModalSystem() {
 
       case 'guide':
       case 'document':
-      case 'resource':
+      case 'resource': {
         const item = items[0];
         return (
           <div className="space-y-6">
@@ -464,9 +464,10 @@ export function FunctionalModalSystem() {
             </Tabs>
           </div>
         );
+      }
 
       case 'formulaire':
-      case 'template':
+      case 'template': {
         const formItem = items[0];
         return (
           <div className="space-y-6">
@@ -505,8 +506,9 @@ export function FunctionalModalSystem() {
             </div>
           </div>
         );
+      }
 
-      case 'video':
+      case 'video': {
         const videoItem = items[0];
         return (
           <div className="space-y-6">
@@ -536,6 +538,7 @@ export function FunctionalModalSystem() {
             </div>
           </div>
         );
+      }
 
       case 'filter':
         return (
@@ -692,7 +695,7 @@ export function FunctionalModalSystem() {
         );
         
       case 'formulaire':
-      case 'template':
+      case 'template': {
         const item = modalState.data?.[0];
         return (
           <div className="flex gap-3">
@@ -705,6 +708,7 @@ export function FunctionalModalSystem() {
             </Button>
           </div>
         );
+      }
         
       default:
         return (

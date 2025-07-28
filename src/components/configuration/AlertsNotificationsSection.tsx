@@ -282,7 +282,7 @@ export function AlertsNotificationsSection({ language = "fr" }: AlertsNotificati
           <div className="space-y-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               {paginatedGeneralAlerts.map((alert) => (
-              <Card key={alert.id} className="hover:shadow-md transition-shadow">
+                <Card key={alert.id} className="hover:shadow-md transition-shadow">
                 <CardContent className="pt-4">
                   <div className="flex flex-col gap-3">
                     <div className="flex items-start justify-between">

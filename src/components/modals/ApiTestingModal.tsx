@@ -134,7 +134,7 @@ export function ApiTestingModal({ isOpen, onClose }: ApiTestingModalProps) {
       
       // Génération d'une réponse simulée réaliste
       let simulatedResponse: any;
-      let status = 200;
+      const status = 200;
       
       if (selectedEndpoint.includes('/auth/login')) {
         simulatedResponse = {
