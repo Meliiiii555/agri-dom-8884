@@ -3,7 +3,11 @@ import { SectionHeader } from './common/SectionHeader';
 import { NomenclatureSection } from "./configuration/NomenclatureSection";
 import { ComplementaryResourcesSection } from "./configuration/ComplementaryResourcesSection";
 import { DataManagementSection } from "./configuration/DataManagementSection";
-import { MobileAppSection } from "./configuration/MobileAppSection";
+import { AlertsNotificationsSection } from './configuration/AlertsNotificationsSection';
+import { UserManagementSection } from './configuration/UserManagementSection';
+import { SecuritySection } from './configuration/SecuritySection';
+import { IntegrationsInteroperabilitySection } from './configuration/IntegrationsInteroperabilitySection';
+import { MobileAppSection } from './configuration/MobileAppSection';
 import { AccessibilitySettings } from "./configuration/AccessibilitySettings";
 import { OfflineMode } from "./configuration/OfflineMode";
 import { PerformanceScalabilitySection } from "./configuration/PerformanceScalabilitySection";
@@ -20,7 +24,11 @@ export function ConfigurationSections({ section, language = "fr" }: Configuratio
         'nomenclature': 'Nomenclature',
         'complementary-resources': 'Ressources Complémentaires',
         'data-management': 'Gouvernance des Données',
+        'alerts-notifications': 'Alertes & Notifications',
+        'user-management': 'Gestion des Utilisateurs',
+        'security': 'Sécurité',
         'performance-scalability': 'Performance et Scalabilité',
+        'integrations-interoperability': 'Intégrations et Interopérabilité',
         'accessibility-settings': 'Personnes à mobilité réduite',
         'offline-mode': 'Mode hors-ligne',
         'mobile-app': 'Version Mobile Native'
@@ -114,8 +122,16 @@ export function ConfigurationSections({ section, language = "fr" }: Configuratio
         return <ComplementaryResourcesSection language={language} />;
       case "data-management":
         return <DataManagementSection language={language} />;
+      case "alerts-notifications":
+        return <AlertsNotificationsSection language={language} />;
+      case "user-management":
+        return <UserManagementSection language={language} />;
+      case "security":
+        return <SecuritySection language={language} />;
       case "performance-scalability":
         return <PerformanceScalabilitySection language={language} />;
+      case "integrations-interoperability":
+        return <IntegrationsInteroperabilitySection language={language} />;
       case "accessibility-settings":
         return <AccessibilitySettings language={language} />;
       case "offline-mode":

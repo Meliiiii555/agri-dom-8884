@@ -18,6 +18,8 @@ import { SavedSearchesEnhanced } from "@/components/SavedSearchesEnhanced";
 import { AccessibilitySettings } from "@/components/configuration/AccessibilitySettings";
 import { EnhancedAccessibilitySettings } from "@/components/configuration/EnhancedAccessibilitySettings";
 import { OfflineMode } from "@/components/configuration/OfflineMode";
+import { SecuritySection } from '@/components/configuration/SecuritySection';
+import { IntegrationsInteroperabilitySection } from '@/components/configuration/IntegrationsInteroperabilitySection';
 import { MobileAppSection } from "@/components/configuration/MobileAppSection";
 import AlgerianLegalOCRComponent from "@/components/ocr/AlgerianLegalOCRComponent";
 import OCRDemoComponent from "@/components/ocr/OCRDemoComponent";
