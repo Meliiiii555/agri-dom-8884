@@ -8,6 +8,9 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    hmr: {
+      overlay: false
+    }
   },
   define: {
     'process.env.NODE_ENV': JSON.stringify(mode),
