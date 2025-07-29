@@ -18,9 +18,7 @@ import { SavedSearchesEnhanced } from "@/components/SavedSearchesEnhanced";
 import { AccessibilitySettings } from "@/components/configuration/AccessibilitySettings";
 import { EnhancedAccessibilitySettings } from "@/components/configuration/EnhancedAccessibilitySettings";
 import { OfflineMode } from "@/components/configuration/OfflineMode";
-import { SecuritySection } from "@/components/configuration/SecuritySection";
 import { MobileAppSection } from "@/components/configuration/MobileAppSection";
-import { IntegrationsInteroperabilitySection } from "@/components/configuration/IntegrationsInteroperabilitySection";
 import AlgerianLegalOCRComponent from "@/components/ocr/AlgerianLegalOCRComponent";
 import OCRDemoComponent from "@/components/ocr/OCRDemoComponent";
 import SimpleOCRDiagnostic from "@/components/ocr/SimpleOCRDiagnostic";
@@ -114,13 +112,11 @@ export function ContentRenderer({ activeSection, language, refreshTrigger }: Con
     case "user-management":
     case "performance-scalability":
       return <ConfigurationSections section={activeSection} language={language} />;
+    // Simple placeholder for removed sections
     case "integrations-interoperability":
-      return <IntegrationsInteroperabilitySection language={language} />;
-    
-    // Redirect data-management to security section
-    case "data-management":
+    case "data-management": 
     case "security":
-      return <SecuritySection language={language} />;
+      return <div className="p-8 text-center text-gray-500">Section temporairement indisponible</div>;
     
     // New mobile app section
     case "mobile-app":

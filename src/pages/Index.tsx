@@ -9,7 +9,6 @@ import { MainHeader } from "@/components/layout/MainHeader";
 import { ContentRenderer } from "@/components/layout/ContentRenderer";
 import { SecurityProvider } from "@/components/security/SecurityProvider";
 import { useModalManager } from "@/utils/modalManager";
-import { UniversalModal } from "@/components/modals/UniversalModal";
 // import { AutoRefreshToggle } from "@/components/common/AutoRefreshToggle"; // Temporairement commenté pour test
 
 const VALID_SECTIONS = new Set([
@@ -209,8 +208,8 @@ const Index = () => {
         {/* Footer */}
         <Footer onSectionChange={handleSectionChange} />
         
-        {/* Modales universelles */}
-        <UniversalModal modal={currentModal} onClose={closeModal} />
+        {/* Modales universelles - Temporarily disabled */}
+        {/* <UniversalModal modal={currentModal} onClose={closeModal} /> */}
       </div>
     </SecurityProvider>
   );
