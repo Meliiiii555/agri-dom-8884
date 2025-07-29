@@ -5,7 +5,7 @@ import { ProcedureCatalogTab } from '../ProcedureCatalogTab';
 import ProceduresApprovalQueue from '../ProceduresApprovalQueue';
 import ProceduresPendingPublication from '../ProceduresPendingPublication';
 import { ProcedureResourcesSection } from '../../ProcedureResourcesSection';
-import { ProcedureSearchSection } from '../../ProcedureSearchSection';
+
 import { TimelineTab } from '../tabs/TimelineTab';
 import { EnrichmentTab } from '../tabs/EnrichmentTab';
 import { ProcedurePopularSearchesTab } from '../ProcedurePopularSearchesTab';

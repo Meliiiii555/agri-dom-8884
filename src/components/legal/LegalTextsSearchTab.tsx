@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
@@ -7,14 +6,13 @@ import {
 } from "lucide-react";
 import { SavedSearchesEnhanced } from "../SavedSearchesEnhanced";
 import { LegalTextsSearchHistoryTab } from "./LegalTextsSearchHistoryTab";
-import { LegalTextsPopularSearchesTab } from "./LegalTextsPopularSearchesTab";
 import { NextGenSearchSection } from "../search/NextGenSearchSection";
 
 export function LegalTextsSearchTab() {
   return (
     <div className="space-y-6">
       <Tabs defaultValue="nextgen" className="w-full">
-        <TabsList className="grid w-full grid-cols-4">
+        <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="nextgen" className="text-sm">
             <Zap className="w-4 h-4 mr-1" />
             Recherche Nouvelle Génération
@@ -24,9 +22,6 @@ export function LegalTextsSearchTab() {
           </TabsTrigger>
           <TabsTrigger value="saved-searches" className="text-sm">
             Recherches sauvegardées
-          </TabsTrigger>
-          <TabsTrigger value="popular-searches" className="text-sm">
-            Recherches populaires
           </TabsTrigger>
         </TabsList>
 
@@ -40,10 +35,6 @@ export function LegalTextsSearchTab() {
         
         <TabsContent value="saved-searches" className="mt-6">
           <SavedSearchesEnhanced />
-        </TabsContent>
-
-        <TabsContent value="popular-searches" className="mt-6">
-          <LegalTextsPopularSearchesTab />
         </TabsContent>
       </Tabs>
     </div>
