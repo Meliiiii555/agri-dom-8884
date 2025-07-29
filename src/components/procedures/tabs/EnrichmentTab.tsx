@@ -24,7 +24,7 @@ export function EnrichmentTab({ onAddProcedure, onOCRTextExtracted, onOCRDataExt
   const { showApiModal, apiContext, openApiModal, closeApiModal } = useApiModalHandler();
 
   const handleOCRExtracted = (text: string) => {
-    console.log('Texte OCR extrait pour procédure:', text);
+
     if (onOCRTextExtracted) {
       onOCRTextExtracted(text);
     }
@@ -32,16 +32,13 @@ export function EnrichmentTab({ onAddProcedure, onOCRTextExtracted, onOCRDataExt
   };
 
   const handleSmartOCRDataExtracted = (data: { documentType: 'legal' | 'procedure', formData: Record<string, any> }) => {
-    console.log('🎯 [EnrichmentTab] Données OCR extraites:', data);
-    console.log('📋 [EnrichmentTab] Type de document:', data.documentType);
-    console.log('📋 [EnrichmentTab] Nombre de champs:', Object.keys(data.formData).length);
-    
+
     // Passer les données au parent AVANT de fermer le scanner
     try {
-      console.log('📤 [EnrichmentTab] Transmission des données au parent...');
+
       if (onOCRDataExtracted) {
         onOCRDataExtracted(data);
-        console.log('✅ [EnrichmentTab] Données transmises avec succès');
+
       } else {
         console.warn('⚠️ [EnrichmentTab] Pas de callback onOCRDataExtracted défini');
         // Fallback: déclencher l'ouverture du formulaire manuel
@@ -53,13 +50,13 @@ export function EnrichmentTab({ onAddProcedure, onOCRTextExtracted, onOCRDataExt
     
     // Fermer le scanner après transmission
     setTimeout(() => {
-      console.log('🔒 [EnrichmentTab] Fermeture du scanner');
+
       setShowOCRScanner(false);
     }, 100);
   };
 
   const handleScanOCRClick = () => {
-    console.log('🎯 [EnrichmentTab] Redirection vers Extraction et Mapping');
+
     // Naviguer vers la section Extraction et Mapping
     const event = new CustomEvent('navigate-to-section', { 
       detail: 'ocr-extraction'
@@ -82,7 +79,7 @@ export function EnrichmentTab({ onAddProcedure, onOCRTextExtracted, onOCRDataExt
   };
 
   const handleBatchImportComplete = (results: Record<string, unknown>[]) => {
-    console.log('Import terminé:', results);
+
     setShowBatchImport(false);
   };
 

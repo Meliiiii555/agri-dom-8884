@@ -31,7 +31,7 @@ export function AlgerianLegalOCRProcessor({
 
   const handleTextExtracted = async (text: string) => {
     if (process.env.NODE_ENV === 'development') {
-      console.log('🇩🇿 [AlgerianLegalOCRProcessor] Texte OCR extrait pour analyse juridique:', text.substring(0, 300) + '...');
+
     }
     
     setProcessingStage('Analyse du texte juridique algérien...');
@@ -124,11 +124,7 @@ export function AlgerianLegalOCRProcessor({
     setConfidence(validationResult.confidence);
     
     if (process.env.NODE_ENV === 'development') {
-      console.log('🇩🇿 Données juridiques algériennes extraites:', legalData);
-      console.log('🇩🇿 [AlgerianLegalOCRProcessor] Données juridiques parsées et validées:', parsedData);
-      console.log('🎯 [AlgerianLegalOCRProcessor] Confiance:', validationResult.confidence + '%');
-      console.log('🏛️ [AlgerianLegalOCRProcessor] Institution détectée:', detectedInstitution);
-      console.log('🗣️ [AlgerianLegalOCRProcessor] Langue détectée:', language);
+
     }
     
     setExtractedData(parsedData);
@@ -138,26 +134,23 @@ export function AlgerianLegalOCRProcessor({
 
   const handleValidateAndUse = () => {
     if (process.env.NODE_ENV === 'development') {
-      console.log('✅ [AlgerianLegalOCRProcessor] Validation et utilisation des données juridiques:', extractedData);
+
     }
     if (extractedData) {
       if (process.env.NODE_ENV === 'development') {
-        console.log('📤 [AlgerianLegalOCRProcessor] Envoi des données vers le formulaire parent');
-        console.log('🏛️ [AlgerianLegalOCRProcessor] Type de document juridique:', extractedData.documentType);
-        console.log('📝 [AlgerianLegalOCRProcessor] Données formulaire:', extractedData.formData);
-        console.log('📊 [AlgerianLegalOCRProcessor] Nombre de champs dans formData:', Object.keys(extractedData.formData).length);
+
       }
       
       try {
         onFormDataExtracted(extractedData);
         if (process.env.NODE_ENV === 'development') {
-          console.log('✅ [AlgerianLegalOCRProcessor] Callback onFormDataExtracted appelé avec succès');
+
         }
         
         // Fermer le scanner après un délai pour permettre au parent de traiter
         if (onClose) {
           if (process.env.NODE_ENV === 'development') {
-            console.log('🔒 [AlgerianLegalOCRProcessor] Fermeture du scanner dans 100ms');
+
           }
           setTimeout(() => {
             onClose();

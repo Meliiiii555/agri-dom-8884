@@ -13,8 +13,7 @@ export function ActionButtons({ resourceType = 'ouvrage' }: ActionButtonsProps) 
   const { showApiModal, openApiModal, closeApiModal } = useApiModalHandler();
 
   const handleAddNew = () => {
-    console.log('Opening add library resource form:', resourceType);
-    
+
     // Déclencher l'événement directement
     const event = new CustomEvent('open-library-form', {
       detail: { resourceType }
@@ -23,8 +22,7 @@ export function ActionButtons({ resourceType = 'ouvrage' }: ActionButtonsProps) 
   };
 
   const handleEnrichment = () => {
-    console.log('Opening enrichment with file import from library action buttons...');
-    
+
     // Déclencher l'événement d'import directement
     const event = new CustomEvent('open-modal', {
       detail: {
@@ -37,7 +35,7 @@ export function ActionButtons({ resourceType = 'ouvrage' }: ActionButtonsProps) 
   };
 
   const handleApiConfig = () => {
-    console.log('Opening API configuration for:', resourceType);
+
     openApiModal('library');
   };
 

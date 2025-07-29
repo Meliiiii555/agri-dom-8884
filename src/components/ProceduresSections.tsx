@@ -26,13 +26,13 @@ export function ProceduresSections({ section, language }: ProceduresSectionsProp
   // Écouter l'événement pour ouvrir le formulaire en mode OCR
   useEffect(() => {
     const handleOpenProcedureFormOCR = () => {
-      console.log('Ouverture du formulaire de procédure en mode OCR');
+
       setFormInputMethod('ocr');
       setShowAddForm(true);
     };
 
     const handleNavigateWithOCR = (event: CustomEvent) => {
-      console.log('🎯 [ProceduresSections] Réception événement OCR:', event.detail);
+
       setOcrData(event.detail.ocrData);
       setFormInputMethod('ocr');
       setShowAddForm(true);
@@ -48,10 +48,9 @@ export function ProceduresSections({ section, language }: ProceduresSectionsProp
   }, []);
 
   const handleOCRDataExtracted = (data: { documentType: 'legal' | 'procedure', formData: Record<string, any> }) => {
-    console.log('🎯 [ProceduresSections] Données OCR reçues:', data);
-    
+
     if (data.documentType === 'procedure') {
-      console.log('📋 [ProceduresSections] Navigation vers le formulaire de procédure avec données OCR');
+
       setOcrData(data.formData);
       setFormInputMethod('ocr');
       setShowAddForm(true);
@@ -61,7 +60,7 @@ export function ProceduresSections({ section, language }: ProceduresSectionsProp
   };
 
   const handleAddProcedure = () => {
-    console.log('Fonction handleAddProcedure appelée');
+
     setFormInputMethod('manual');
     setShowAddForm(true);
   };
@@ -110,7 +109,7 @@ export function ProceduresSections({ section, language }: ProceduresSectionsProp
   };
 
   const handleOpenApprovalQueue = () => {
-    console.log('Fonction handleOpenApprovalQueue appelée dans ProceduresSections');
+
     setShowApprovalQueue(true);
   };
 
@@ -122,12 +121,12 @@ export function ProceduresSections({ section, language }: ProceduresSectionsProp
   };
 
   const handleRejectFromQueue = (item: Record<string, unknown>, reason: string) => {
-    console.log('Rejeté depuis la file:', item, reason);
+
     // Ici vous pouvez ajouter la logique pour rejeter l'élément
   };
 
   const handleViewFromQueue = (item: Record<string, unknown>) => {
-    console.log('Examen depuis la file:', item);
+
     setProcedureData(item.data);
     setShowApprovalQueue(false);
     setShowApprovalModal(true);

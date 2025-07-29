@@ -605,7 +605,6 @@ export function HelpSections({ section, language = "fr" }: HelpSectionsProps) {
                 </div>
               </TabsContent>
 
-
               <TabsContent value="user-guide" className="space-y-4">
                 <UserGuideSection />
               </TabsContent>

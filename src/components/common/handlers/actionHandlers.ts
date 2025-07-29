@@ -51,7 +51,7 @@ export const executeAction = (actionType, itemTitle, data, handlers = actionHand
         handlers.handleFeedback(itemTitle || 'Element');
         break;
       default:
-        console.log('Action non reconnue:', actionType);
+
     }
   } catch (error) {
     console.error('Erreur lors de l\'exécution de l\'action:', error);

@@ -90,7 +90,6 @@ class LegalFormMappingService {
    * Initialise les templates de formulaires depuis la nomenclature algérienne
    */
   private initializeFormTemplates(): void {
-    console.log('📋 Initializing Algerian legal form templates...');
 
     // Charger tous les templates algériens
     for (const template of algerianLegalTemplates) {
@@ -110,7 +109,6 @@ class LegalFormMappingService {
       this.formTemplates.set(template.type, formStructure); // Alias par type
     }
 
-    console.log(`✅ Loaded ${algerianLegalTemplates.length} Algerian legal templates`);
   }
 
   /**
@@ -339,8 +337,7 @@ class LegalFormMappingService {
 
     this.formTemplates.set('legal_document', legalDocumentTemplate);
     this.formTemplates.set('administrative_procedure', administrativeProcedureTemplate);
-    
-    console.log(`📋 Initialized ${this.formTemplates.size} form templates`);
+
   }
 
   /**
@@ -351,7 +348,6 @@ class LegalFormMappingService {
     formType?: string
   ): Promise<MappedFormData> {
     const startTime = Date.now();
-    console.log('🗂️ Starting OCR data mapping to form...');
 
     try {
       // Déterminer le type de formulaire automatiquement si non spécifié
@@ -369,8 +365,6 @@ class LegalFormMappingService {
 
       const processingTime = Date.now() - startTime;
       const mappingConfidence = this.calculateMappingConfidence(mappedSections);
-
-      console.log(`🗂️ Mapping completed in ${processingTime}ms with confidence ${mappingConfidence.toFixed(2)}`);
 
       return {
         formId: formStructure.id,
@@ -419,7 +413,6 @@ class LegalFormMappingService {
     section: FormSection,
     ocrData: StructuredLegalDocument
   ): Promise<any> {
-    console.log(`📋 Mapping section: ${section.title}`);
 
     const mappedFields = await Promise.all(
       section.fields.map(field => this.mapField(field, ocrData))
@@ -438,7 +431,6 @@ class LegalFormMappingService {
     field: FormField,
     ocrData: StructuredLegalDocument
   ): Promise<any> {
-    console.log(`🔍 Mapping field: ${field.label}`);
 
     let value: any = null;
     let confidence = 0;
@@ -773,8 +765,7 @@ class LegalFormMappingService {
 
     const updated = { ...existing, ...updates };
     this.formTemplates.set(formType, updated);
-    
-    console.log(`📋 Updated form structure for: ${formType}`);
+
     return true;
   }
 }

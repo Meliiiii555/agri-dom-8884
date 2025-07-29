@@ -467,8 +467,6 @@ const ProceduresApprovalQueue: React.FC = () => {
             </div>
           </Card>
 
-
-
           {/* Documents */}
           <div className="space-y-3">
             {filteredDocuments.map((doc) => (

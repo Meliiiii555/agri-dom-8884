@@ -28,7 +28,7 @@ export function PDFViewerModal({ isOpen, onClose, data }: PDFViewerModalProps) {
           url: data.pdfUrl
         });
       } catch (error) {
-        console.log('Partage annulé');
+
       }
     }
   };

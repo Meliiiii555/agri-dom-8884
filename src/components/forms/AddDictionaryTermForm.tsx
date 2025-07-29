@@ -86,8 +86,6 @@ export function AddDictionaryTermForm({ isOpen, onClose }: AddDictionaryTermForm
       relatedTerms: formData.relatedTerms.filter(term => term.trim() !== '')
     };
 
-    console.log('Nouveau terme de dictionnaire:', cleanData);
-    
     toast({
       title: "✅ Terme ajouté avec succès",
       description: `Le terme "${formData.termFrench}" a été ajouté au dictionnaire juridique`,

@@ -84,7 +84,7 @@ export function KnowledgeGraph() {
   };
 
   const handleApplySettings = (settings: Record<string, unknown>) => {
-    console.log('Nouveaux paramètres appliqués:', settings);
+
     // Ici on appliquerait les paramètres au graphe
   };
 

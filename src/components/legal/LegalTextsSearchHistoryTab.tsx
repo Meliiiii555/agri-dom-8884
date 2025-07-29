@@ -242,8 +242,7 @@ export function LegalTextsSearchHistoryTab() {
         generatedAt: new Date().toISOString(),
         insights: 'Analyse des patterns de recherche et évolution des besoins'
       };
-      
-      console.log('📈 Analyse comparative des recherches:', comparisonAnalysis);
+
     } else {
       alert('⚠️ Veuillez sélectionner au moins 2 recherches pour effectuer une comparaison.');
     }

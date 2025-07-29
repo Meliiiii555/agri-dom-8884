@@ -36,9 +36,7 @@ export function AddDictionnaireJuridiqueForm({ isOpen, onClose }: AddDictionnair
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    console.log('Ajout de dictionnaire juridique:', formData);
-    
+
     toast({
       title: "Dictionnaire juridique ajouté",
       description: `Le dictionnaire "${formData.title}" a été ajouté avec succès à la bibliothèque.`,

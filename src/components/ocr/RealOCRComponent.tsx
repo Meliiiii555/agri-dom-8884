@@ -253,7 +253,7 @@ Fait à Alger, le 20 février 2024.`,
         setIsScannerMode(true);
       }
     } catch (error) {
-      console.log('API Scanner non disponible, utilisation du mode capture');
+
       // Fallback vers interface de capture scanner
       setIsScannerMode(true);
     }

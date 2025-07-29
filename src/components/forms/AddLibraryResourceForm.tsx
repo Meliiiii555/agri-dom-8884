@@ -32,8 +32,7 @@ export function AddLibraryResourceForm({ isOpen, onClose, resourceType }: AddLib
     e.preventDefault();
     
     // Simulation d'ajout de ressource
-    console.log('Ajout de ressource:', resourceType, formData);
-    
+
     toast({
       title: "Ressource ajoutée",
       description: `${getResourceTitle(resourceType)} "${formData.title}" a été ajouté avec succès.`,

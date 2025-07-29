@@ -29,7 +29,7 @@ export function LegalTextCard({ text }: LegalTextCardProps) {
   };
 
   const handleDownload = () => {
-    console.log('Downloading legal text:', text.title);
+
     // Simulate download
     window.dispatchEvent(new CustomEvent('download-legal-text', { 
       detail: { 
@@ -41,7 +41,7 @@ export function LegalTextCard({ text }: LegalTextCardProps) {
   };
 
   const handleShare = () => {
-    console.log('Sharing legal text:', text.title);
+
     // Open share modal
     window.dispatchEvent(new CustomEvent('share-legal-text', { 
       detail: { 

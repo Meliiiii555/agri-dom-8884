@@ -29,7 +29,7 @@ export function NewSecurityPolicyModal({ isOpen, onClose }: NewSecurityPolicyMod
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Création nouvelle politique de sécurité:', formData);
+
     onClose();
   };
 

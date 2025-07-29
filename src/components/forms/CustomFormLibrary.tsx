@@ -117,7 +117,7 @@ export function CustomFormLibrary() {
   };
 
   const handleStar = (templateId: string) => {
-    console.log('Ajouté aux favoris:', templateId);
+
   };
 
   return (

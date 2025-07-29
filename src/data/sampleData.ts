@@ -569,16 +569,6 @@ export function initializeSampleData() {
   sampleConfigurations.forEach(config => store.setConfiguration(config));
   sampleForumMembers.forEach(member => store.addForumMember(member));
 
-  console.log('✅ Données d\'exemple initialisées avec succès');
-  console.log(`📄 ${sampleLegalTexts.length} textes juridiques ajoutés`);
-  console.log(`📋 ${sampleProcedures.length} procédures ajoutées`);
-  console.log(`📰 ${sampleNews.length} actualités ajoutées`);
-  console.log(`📝 ${sampleTemplates.length} modèles ajoutés`);
-  console.log(`💬 ${sampleForumDiscussions.length} discussions de forum ajoutées`);
-  console.log(`📁 ${sampleSharedResources.length} ressources partagées ajoutées`);
-  console.log(`🎥 ${sampleVideoTutorials.length} tutoriels vidéo ajoutés`);
-  console.log(`⚙️ ${sampleConfigurations.length} configurations ajoutées`);
-  console.log(`👥 ${sampleForumMembers.length} membres du forum ajoutés`);
 }
 
 // Fonction pour réinitialiser les données
@@ -592,6 +582,5 @@ export function resetSampleData() {
   store.templates.forEach(template => store.deleteTemplate(template.id));
   store.savedSearches.forEach(search => store.deleteSavedSearch(search.id));
   store.favorites.forEach(favorite => store.removeFromFavorites(favorite.itemId, favorite.itemType));
-  
-  console.log('🗑️ Toutes les données ont été supprimées');
+
 }

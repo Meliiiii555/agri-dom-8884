@@ -216,7 +216,7 @@ export function AutoExtractionModal({ isOpen, onClose, context }: AutoExtraction
   };
 
   const handleViewResults = (job: ExtractionJob) => {
-    console.log('Résultats de l\'extraction:', job.results);
+
     toast({
       title: "Résultats disponibles",
       description: `${job.extractedCount} éléments extraits de ${job.source}`,
@@ -458,7 +458,7 @@ export function AutoExtractionModal({ isOpen, onClose, context }: AutoExtraction
             onClick={() => {
               // Traiter les résultats et fermer
               const allResults = extractionJobs.flatMap(job => job.results);
-              console.log('Résultats finaux:', allResults);
+
               toast({
                 title: "Extraction terminée",
                 description: `${allResults.length} éléments prêts à être importés`,

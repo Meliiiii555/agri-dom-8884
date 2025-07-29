@@ -178,12 +178,12 @@ export function useOCRQualityMonitoring() {
 
   const startMonitoring = useCallback(() => {
     setIsMonitoring(true);
-    console.log('📊 OCR Quality Monitoring started');
+
   }, []);
 
   const stopMonitoring = useCallback(() => {
     setIsMonitoring(false);
-    console.log('📊 OCR Quality Monitoring stopped');
+
   }, []);
 
   const addManualMetric = useCallback((documentMetrics: {
@@ -193,8 +193,7 @@ export function useOCRQualityMonitoring() {
     documentType: string;
     success: boolean;
   }) => {
-    console.log('📈 Adding manual OCR metric:', documentMetrics);
-    
+
     setMetrics(prev => {
       const newTrendPoint: TrendData = {
         timestamp: new Date().toISOString(),

@@ -18,18 +18,13 @@ export function LegalTextsSections({ section, language }: LegalTextsSectionsProp
   const [ocrData, setOcrData] = useState<any>(null);
 
   const handleOCRDataExtracted = (data: { documentType: 'legal' | 'procedure', formData: Record<string, any> }) => {
-    console.log('🎯 [LegalTextsSections] Données OCR reçues:', data);
-    console.log('📋 [LegalTextsSections] Type de document:', data.documentType);
-    console.log('📋 [LegalTextsSections] Données formulaire:', Object.keys(data.formData));
-    console.log('📋 [LegalTextsSections] État actuel showAddForm:', showAddForm);
-    
+
     if (data.documentType === 'legal') {
-      console.log('📋 [LegalTextsSections] Navigation vers le formulaire de texte juridique avec données OCR');
+
       setOcrData(data.formData);
       setFormInputMethod('ocr');
       setShowAddForm(true);
-      console.log('✅ [LegalTextsSections] Formulaire ouvert avec données OCR');
-      console.log('📋 [LegalTextsSections] Nouveau état showAddForm:', true);
+
     } else {
       console.warn('⚠️ [LegalTextsSections] Type de document non compatible avec les textes juridiques');
     }
@@ -39,13 +34,13 @@ export function LegalTextsSections({ section, language }: LegalTextsSectionsProp
   // Écouter l'événement de redirection OCR
   useEffect(() => {
     const handleOpenLegalTextFormOCR = () => {
-      console.log('Ouverture du formulaire en mode OCR');
+
       setFormInputMethod('ocr');
       setShowAddForm(true);
     };
 
     const handleNavigateWithOCR = (event: CustomEvent) => {
-      console.log('🎯 [LegalTextsSections] Réception événement OCR:', event.detail);
+
       setOcrData(event.detail.ocrData);
       setFormInputMethod('ocr');
       setShowAddForm(true);
@@ -61,13 +56,13 @@ export function LegalTextsSections({ section, language }: LegalTextsSectionsProp
   }, []);
 
   const handleAddLegalText = () => {
-    console.log('🎯 [LegalTextsSections] Ouverture formulaire manuel');
+
     setFormInputMethod('manual');
     setShowAddForm(true);
   };
 
   const handleOCRTextExtracted = (text: string) => {
-    console.log('Texte OCR reçu dans LegalTextsSections:', text);
+
     setOcrExtractedText(text);
     setFormInputMethod('ocr');
     setShowAddForm(true);

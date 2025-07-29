@@ -38,9 +38,7 @@ export function AddTerminologieSpecialiseeForm({ isOpen, onClose }: AddTerminolo
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    console.log('Ajout de terminologie spécialisée:', formData);
-    
+
     toast({
       title: "Terminologie spécialisée ajoutée",
       description: `La terminologie "${formData.title}" a été ajoutée avec succès à la bibliothèque.`,

@@ -42,7 +42,7 @@ function LegalTextFormEnhanced({
   // Écouter l'événement pour ouvrir directement l'onglet OCR
   useEffect(() => {
     const handleOpenOCRTab = (event: CustomEvent) => {
-      console.log('🎯 [LegalTextFormEnhanced] Ouverture directe onglet OCR');
+
       setInputMethod('ocr');
     };
 
@@ -95,17 +95,13 @@ function LegalTextFormEnhanced({
   // Logs de debug optimisés - seulement quand les données changent
   useEffect(() => {
     if (process.env.NODE_ENV === 'development') {
-      console.log('=== DEBUG LegalTextFormEnhanced ===');
-      console.log('Nombre total de formulaires dans la bibliothèque:', customForms.length);
-      console.log('Formulaires juridiques uniques:', uniqueLegalTextForms.length);
-      console.log('Types trouvés:', `(${availableTypes.length})`, availableTypes);
-      console.log('Catégories trouvées:', `(${availableCategories.length})`, availableCategories);
+
     }
   }, [customForms.length, uniqueLegalTextForms.length, availableTypes.length, availableCategories.length]);
 
   const handleOCRFormDataExtracted = (data: { documentType: 'legal', formData: Record<string, any> }) => {
     if (process.env.NODE_ENV === 'development') {
-      console.log('🎯 [LegalTextFormEnhanced] Traitement des données OCR reçues:', data);
+
     }
     
     // Si aucun formulaire n'est sélectionné, essayer de le détecter automatiquement
@@ -129,7 +125,7 @@ function LegalTextFormEnhanced({
       
       if (formToUse) {
         if (process.env.NODE_ENV === 'development') {
-          console.log('🎯 [LegalTextForm] Formulaire détecté automatiquement:', formToUse);
+
         }
         setSelectedForm(formToUse);
       }
@@ -138,13 +134,13 @@ function LegalTextFormEnhanced({
     // Utiliser le mapping algérien spécialisé pour les textes juridiques
     const algerianMappedData: Record<string, unknown> = mapAlgerianOCRDataToForm(data.formData, 'legal');
     if (process.env.NODE_ENV === 'development') {
-      console.log('🇩🇿 [LegalTextForm] Données mappées avec nomenclature algérienne:', algerianMappedData);
+
     }
     
     // Validation spécifique aux documents juridiques algériens
     const validationResult = validateAlgerianDocument(data);
     if (process.env.NODE_ENV === 'development') {
-      console.log('✅ [LegalTextForm] Validation algérienne:', validationResult);
+
     }
     
     // Fallback sur le mapping générique si nécessaire
@@ -153,9 +149,7 @@ function LegalTextFormEnhanced({
     // Fusionner les deux mappings (priorité au mapping algérien)
     const mappedData: Record<string, unknown> = { ...genericMappedData, ...algerianMappedData };
     if (process.env.NODE_ENV === 'development') {
-      console.log('📋 [LegalTextForm] Données finales fusionnées:', mappedData);
-      console.log('🔍 [LegalTextForm] Clés disponibles dans mappedData:', Object.keys(mappedData));
-      console.log('🔍 [LegalTextForm] Valeurs non vides:', Object.entries(mappedData).filter(([k, v]) => v && v !== ''));
+
     }
     
     // Initialiser tous les champs du formulaire sélectionné avec les données OCR
@@ -308,29 +302,27 @@ function LegalTextFormEnhanced({
       // Log pour chaque champ mappé
       if (fieldValue) {
         if (process.env.NODE_ENV === 'development') {
-          console.log(`🎯 [LegalTextForm] Champ ${field.name} mappé vers: ${fieldValue.toString().substring(0, 100)}`);
+
         }
       }
     });
     
     // Logs de debug du mapping
     if (process.env.NODE_ENV === 'development') {
-      console.log('🎯 [LegalTextForm] Mapping terminé. Données à injecter:', completeFormData);
-      console.log('🎯 [LegalTextForm] Champs mappés:', Object.keys(completeFormData));
-      console.log('🎯 [LegalTextForm] Valeurs mappées non vides:', Object.entries(completeFormData).filter(([k, v]) => v && v !== ''));
+
     }
     
     // S'assurer qu'un type est sélectionné (priorité aux données OCR)
     if (mappedData.type && !completeFormData.selectedType) {
       completeFormData.selectedType = String(mappedData.type);
       if (process.env.NODE_ENV === 'development') {
-        console.log('🎯 [LegalTextForm] Type automatiquement sélectionné:', mappedData.type);
+
       }
     } else if (!completeFormData.selectedType) {
       // Fallback sur le premier type disponible
       completeFormData.selectedType = 'loi';
       if (process.env.NODE_ENV === 'development') {
-        console.log('🎯 [LegalTextForm] Type par défaut sélectionné: loi');
+
       }
     }
 
@@ -338,7 +330,7 @@ function LegalTextFormEnhanced({
     setFormData(prev => {
       const newFormData = { ...prev, ...completeFormData };
       if (process.env.NODE_ENV === 'development') {
-        console.log('🎯 [LegalTextForm] FormData après injection:', newFormData);
+
       }
       return newFormData;
     });
@@ -346,22 +338,20 @@ function LegalTextFormEnhanced({
     // S'assurer qu'un type est sélectionné automatiquement si détecté
     if (formToUse && !selectedTextType) {
       if (process.env.NODE_ENV === 'development') {
-        console.log('🎯 [LegalTextForm] Sélection automatique du type de formulaire:', formToUse.type);
+
       }
       setSelectedTextType(formToUse.type);
     }
     
     // Forcer la mise à jour des données du formulaire
     if (process.env.NODE_ENV === 'development') {
-      console.log('🔄 [LegalTextForm] Forçage de la mise à jour avec les données complètes:', completeFormData);
+
     }
     
     // Notification à l'utilisateur et redirection automatique vers le formulaire
     const filledFieldsCount = Object.values(completeFormData).filter(value => value && value !== '').length;
     if (process.env.NODE_ENV === 'development') {
-      console.log('✅ [LegalTextForm] Formulaire rempli avec', Object.keys(completeFormData).length, 'champs');
-      console.log('📋 [LegalTextForm] Données du formulaire final:', completeFormData);
-      console.log('📊 [LegalTextForm] Nombre de champs remplis:', filledFieldsCount);
+
     }
     
     toast({
@@ -371,7 +361,7 @@ function LegalTextFormEnhanced({
     
     // Redirection vers l'onglet formulaire avec un petit délai pour permettre aux données de se propager
     if (process.env.NODE_ENV === 'development') {
-      console.log('🔄 [LegalTextForm] Basculement vers le mode manuel...');
+
     }
     setTimeout(() => {
       setInputMethod('manual'); // Basculer vers le mode manuel pour afficher le formulaire
@@ -382,7 +372,7 @@ function LegalTextFormEnhanced({
   useEffect(() => {
     if (ocrData) {
       if (process.env.NODE_ENV === 'development') {
-        console.log('🎯 [LegalTextFormEnhanced] Traitement des données OCR reçues:', ocrData);
+
       }
       handleOCRFormDataExtracted(ocrData as { documentType: 'legal', formData: Record<string, any> });
     }
@@ -393,7 +383,7 @@ function LegalTextFormEnhanced({
       import('@/utils/ocrFormFiller').then(({ extractLegalTextData }) => {
         const extractedData = extractLegalTextData(initialOCRText);
         if (process.env.NODE_ENV === 'development') {
-          console.log('Pré-remplissage avec OCR:', extractedData);
+
         }
         setFormData(extractedData);
       }).catch(() => {
@@ -404,13 +394,13 @@ function LegalTextFormEnhanced({
 
   const handleOCRTextExtracted = (extractedText: string) => {
     if (process.env.NODE_ENV === 'development') {
-      console.log('Texte OCR reçu:', extractedText.substring(0, 200) + '...');
+
     }
     
     import('@/utils/ocrFormFiller').then(({ extractLegalTextData }) => {
       const extractedData = extractLegalTextData(extractedText);
       if (process.env.NODE_ENV === 'development') {
-        console.log('Données extraites par OCR:', extractedData);
+
       }
       
       // Auto-fill form based on extracted data
@@ -419,7 +409,7 @@ function LegalTextFormEnhanced({
       // Auto-select text type if detected
       if (extractedData.type) {
         if (process.env.NODE_ENV === 'development') {
-          console.log('Auto-sélection du type:', extractedData.type);
+
         }
         setSelectedTextType(extractedData.type);
       }
@@ -449,7 +439,7 @@ function LegalTextFormEnhanced({
     e.preventDefault();
     const finalData = { ...formData, textType: selectedTextType, formTemplate: selectedForm };
     if (process.env.NODE_ENV === 'development') {
-      console.log('Données finales du formulaire:', finalData);
+
     }
     onSubmit(finalData);
     toast({

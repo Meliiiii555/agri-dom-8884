@@ -130,7 +130,6 @@ class LegalOCRExtractionService {
    */
   async extractFromPDF(file: File): Promise<StructuredLegalDocument> {
     const startTime = Date.now();
-    console.log('🇩🇿 Starting legal document extraction...');
 
     try {
       // Étape 1: Extraction des pages et conversion en images
@@ -176,7 +175,6 @@ class LegalOCRExtractionService {
       const entities = await this.structureExtractedData(allExtractedText);
       
       const processingTime = Date.now() - startTime;
-      console.log(`🇩🇿 Extraction completed in ${processingTime}ms`);
 
       return {
         metadata: {
@@ -206,8 +204,7 @@ class LegalOCRExtractionService {
   private async extractPages(file: File): Promise<any[]> {
     // Simulation de l'extraction des pages
     // En production, utiliser PyMuPDF ou Tika
-    console.log('📄 Extracting pages from PDF...');
-    
+
     return new Promise((resolve) => {
       setTimeout(() => {
         // Retourner des pages simulées
@@ -223,8 +220,7 @@ class LegalOCRExtractionService {
    * Détection des lignes horizontales et verticales (HoughLinesP)
    */
   private async detectLines(page: any): Promise<any[]> {
-    console.log('📐 Detecting horizontal and vertical lines...');
-    
+
     // Simulation de la détection des lignes avec OpenCV/HoughLinesP
     return [
       { type: 'horizontal', x1: 0, y1: 50, x2: 800, y2: 50 },
@@ -238,8 +234,7 @@ class LegalOCRExtractionService {
    * Suppression des bordures selon les patterns identifiés
    */
   private removeBorders(page: any, lines: any[]): any {
-    console.log('🗑️ Removing borders...');
-    
+
     // Identifier les bordures selon l'analyse: 3 lignes horizontales en haut, 2 en bas, 2 verticales de chaque côté
     const borderLines = lines.filter(line => {
       if (line.type === 'horizontal') {
@@ -260,8 +255,7 @@ class LegalOCRExtractionService {
    * Détection des lignes verticales séparatrices de texte
    */
   private detectTextSeparators(lines: any[]): any[] {
-    console.log('📝 Detecting text separator lines...');
-    
+
     const verticalLines = lines.filter(line => line.type === 'vertical');
     
     // Filtrer les lignes qui ne croisent pas de lignes horizontales
@@ -287,8 +281,7 @@ class LegalOCRExtractionService {
    * Détection des tables par intersection de lignes
    */
   private detectTables(lines: any[]): any[] {
-    console.log('📊 Detecting tables...');
-    
+
     const horizontalLines = lines.filter(l => l.type === 'horizontal');
     const verticalLines = lines.filter(l => l.type === 'vertical');
     
@@ -345,8 +338,7 @@ class LegalOCRExtractionService {
    * Extraction des rectangles représentant zones de texte et tables
    */
   private extractRectangles(page: any, tables: any[], separators: any[]): any[] {
-    console.log('🔲 Extracting text and table rectangles...');
-    
+
     const rectangles = [];
     
     // Ajouter les rectangles de tables
@@ -385,8 +377,7 @@ class LegalOCRExtractionService {
    * Extraction du texte d'un rectangle
    */
   private async extractTextFromRectangle(rectangle: any): Promise<ExtractedText> {
-    console.log(`📝 Extracting text from rectangle ${rectangle.id}...`);
-    
+
     // Simulation de l'extraction de texte
     const sampleTexts = [
       "Vu la Constitution, notamment ses articles 99-4° et 143 (alinéa 1er) ; Vu la loi n° 22-24 du Aouel Joumada Ethania 1444 correspondant au 25 décembre 2022 portant loi de finances pour 2023 ;",
@@ -413,8 +404,7 @@ class LegalOCRExtractionService {
    * Extraction de table d'un rectangle
    */
   private async extractTableFromRectangle(rectangle: any): Promise<ExtractedTable> {
-    console.log(`📊 Extracting table from rectangle ${rectangle.id}...`);
-    
+
     // Étape 12: Détecter les cellules
     const cells = this.detectTableCells(rectangle);
     
@@ -469,8 +459,7 @@ class LegalOCRExtractionService {
    * Structuration des données extraites avec expressions régulières
    */
   private async structureExtractedData(texts: ExtractedText[]): Promise<LegalEntity[]> {
-    console.log('🏗️ Structuring extracted data with regex patterns...');
-    
+
     const entities: LegalEntity[] = [];
     const fullText = texts.map(t => t.content).join(' ');
     
@@ -605,8 +594,7 @@ class LegalOCRExtractionService {
    * Conversion du PDF en images pour traitement
    */
   private async convertPDFToImages(file: File): Promise<ImageData[]> {
-    console.log('🖼️ Converting PDF to images...');
-    
+
     // Placeholder - en réalité, utiliserait une bibliothèque comme PDF.js
     // Pour le développement, retourner des images simulées
     const mockImageData: ImageData[] = [];
@@ -630,8 +618,7 @@ class LegalOCRExtractionService {
         mockImageData.push(imageData);
       }
     }
-    
-    console.log(`✅ Converted PDF to ${mockImageData.length} images`);
+
     return mockImageData;
   }
 
@@ -657,8 +644,7 @@ class LegalOCRExtractionService {
       
       extractedTexts.push(extractedText);
     }
-    
-    console.log(`📝 Extracted ${extractedTexts.length} text regions from page ${processedPage.pageNumber}`);
+
     return extractedTexts;
   }
 

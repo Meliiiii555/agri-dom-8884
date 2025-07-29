@@ -938,8 +938,7 @@ export function ContentRenderer({ activeSection, language, refreshTrigger }: Con
       return <AdvancedSearchSection />;
     case "saved-searches":
       return <SavedSearchesEnhanced />;
-    
-    
+
     default:
       return (
         <div className="flex items-center justify-center h-96">

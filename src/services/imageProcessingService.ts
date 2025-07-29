@@ -76,7 +76,7 @@ class ImageProcessingService {
    * Étapes 1-16 de l'annexe
    */
   async processPage(imageData: ImageData, pageNumber: number): Promise<ProcessedPage> {
-    console.log(`🔍 Processing page ${pageNumber} - Starting Algorithm 1...`);
+
     const startTime = performance.now();
 
     const result: ProcessedPage = {
@@ -99,25 +99,25 @@ class ImageProcessingService {
 
     try {
       // Étape 2-3 : Détecter lignes horizontales et verticales
-      console.log('📐 Step 2-3: Detecting horizontal and vertical lines...');
+
       const { horizontal, vertical } = await this.detectLines(imageData);
       result.horizontalLines = horizontal;
       result.verticalLines = vertical;
 
       // Étape 4 : Enlever les bordures
-      console.log('🚫 Step 4: Removing borders...');
+
       result.borderRegion = this.removeBorders(horizontal, vertical, imageData.width, imageData.height);
 
       // Étape 5 : Détecter lignes verticales séparatrices de texte
-      console.log('📏 Step 5: Detecting text separator lines...');
+
       result.separatorLines = this.detectTextSeparators(vertical, result.borderRegion);
 
       // Étape 6 : Détecter les tables (intersection lignes)
-      console.log('📊 Step 6: Detecting tables...');
+
       result.tableRegions = this.detectTables(horizontal, vertical, result.borderRegion);
 
       // Étape 7-15 : Extraire rectangles pour zones texte et tables
-      console.log('📝 Step 7-15: Extracting text and table regions...');
+
       result.textRegions = this.extractTextRegions(
         result.separatorLines,
         result.tableRegions,
@@ -128,7 +128,6 @@ class ImageProcessingService {
       result.tableRegions = await this.processTablesWithImplicitRows(result.tableRegions);
 
       result.processingTime = performance.now() - startTime;
-      console.log(`✅ Page ${pageNumber} processed in ${result.processingTime.toFixed(2)}ms`);
 
       return result;
 
@@ -178,7 +177,6 @@ class ImageProcessingService {
         }
       }
 
-      console.log(`📐 Detected ${lines.horizontal.length} horizontal lines, ${lines.vertical.length} vertical lines`);
       return lines;
 
     } catch (error) {
@@ -240,8 +238,6 @@ class ImageProcessingService {
       ? Math.min(...bottomBorders.map(l => l.y1)) 
       : pageHeight) - contentY - tolerance;
 
-    console.log(`🚫 Borders removed - Content area: ${contentX},${contentY} ${contentWidth}x${contentHeight}`);
-    
     return { contentX, contentY, contentWidth, contentHeight };
   }
 
@@ -274,7 +270,6 @@ class ImageProcessingService {
       }
     }
 
-    console.log(`📏 Found ${separators.length} text separator lines`);
     return separators;
   }
 
@@ -307,7 +302,6 @@ class ImageProcessingService {
       tables.push(table);
     }
 
-    console.log(`📊 Detected ${tables.length} tables`);
     return tables;
   }
 
@@ -339,7 +333,6 @@ class ImageProcessingService {
       }
     }
 
-    console.log(`📝 Extracted ${textRegions.length} text regions`);
     return textRegions;
   }
 
@@ -351,7 +344,6 @@ class ImageProcessingService {
     const processedTables: TableRegion[] = [];
 
     for (const table of tables) {
-      console.log(`🔧 Processing table with implicit rows: ${table.width}x${table.height}`);
 
       // Redessiner les lignes pour créer une grille complète
       const completeGrid = this.redrawTableGrid(table);
@@ -376,15 +368,14 @@ class ImageProcessingService {
   private applyMorphologicalOperations(imageData: ImageData): ImageData {
     // Simulation de dilatation/érosion pour améliorer la détection des lignes
     // En réalité, ceci devrait utiliser des opérations morphologiques sur l'image
-    console.log('🔧 Applying morphological operations (dilation/erosion)');
+
     return imageData; // Placeholder - implémentation simplifiée
   }
 
   private simulateHoughLines(imageData: ImageData): DetectedLine[] {
     // Simulation de HoughLinesP d'OpenCV
     // En réalité, ceci devrait analyser l'image pour détecter les lignes
-    console.log('🔍 Simulating Hough Lines detection');
-    
+
     // Placeholder - génération de lignes d'exemple pour la démonstration
     return [
       { x1: 50, y1: 100, x2: 500, y2: 100, type: 'horizontal', confidence: 0.9 },
@@ -441,7 +432,7 @@ class ImageProcessingService {
 
   private redrawTableGrid(table: TableRegion): any {
     // Redessiner les lignes pour créer une grille complète (gestion implicit rows)
-    console.log('🔧 Redrawing table grid for implicit rows');
+
     return table;
   }
 

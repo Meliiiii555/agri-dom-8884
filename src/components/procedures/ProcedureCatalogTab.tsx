@@ -31,14 +31,14 @@ export function ProcedureCatalogTab({ onAddProcedure, onOpenApprovalQueue }: Pro
 
   const handleTabSearch = (query: string) => {
     setSearchTerm(query);
-    console.log('Procedure tab search:', query);
+
   };
 
   const handleFilterChange = (filters: { type?: string; status?: string; digitization?: string }) => {
     if (filters.type !== undefined) setSelectedType(filters.type);
     if (filters.status !== undefined) setSelectedStatus(filters.status);
     if (filters.digitization !== undefined) setSelectedDigitization(filters.digitization);
-    console.log('Filters changed:', filters);
+
   };
 
   const handleFilter = (e: React.MouseEvent) => {
@@ -54,13 +54,13 @@ export function ProcedureCatalogTab({ onAddProcedure, onOpenApprovalQueue }: Pro
   };
 
   const handleFiltersApplied = (filters: any) => {
-    console.log('✅ Filters applied to procedures:', filters);
+
     // Ici on pourrait filtrer la liste des procédures
     setIsFilterModalOpen(false);
   };
 
   const handleSortApplied = (sort: any) => {
-    console.log('✅ Sort applied to procedures:', sort);
+
     // Ici on pourrait trier la liste des procédures
     setIsSortModalOpen(false);
   };
@@ -542,7 +542,7 @@ export function ProcedureCatalogTab({ onAddProcedure, onOpenApprovalQueue }: Pro
             variant="outline" 
             size="sm"
             onClick={() => {
-              console.log('File d\'approbation clicked - redirection vers Alimentation de la Banque de Données');
+
               const event = new CustomEvent('navigate-to-section', {
                 detail: 'bank-feeding-procedures-approval'
               });
@@ -555,7 +555,7 @@ export function ProcedureCatalogTab({ onAddProcedure, onOpenApprovalQueue }: Pro
           </Button>
           
           <Button size="sm" onClick={() => {
-            console.log('Ajouter une procédure clicked - redirection vers Alimentation de la Banque de Données');
+
             const event = new CustomEvent('navigate-to-section', {
               detail: 'bank-feeding-procedures-enrichment'
             });

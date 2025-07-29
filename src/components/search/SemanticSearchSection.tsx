@@ -245,7 +245,7 @@ export function SemanticSearchSection() {
                               variant="outline" 
                               size="sm"
                               onClick={() => {
-                                console.log('Consulting semantic result:', result.title);
+
                                 window.dispatchEvent(new CustomEvent('view-document', { 
                                   detail: { documentId: result.id }
                                 }));
@@ -258,7 +258,7 @@ export function SemanticSearchSection() {
                               size="sm" 
                               className="bg-purple-600 hover:bg-purple-700"
                               onClick={() => {
-                                console.log('Using semantic result:', result.title);
+
                                 window.dispatchEvent(new CustomEvent('use-template', { 
                                   detail: { templateId: result.id }
                                 }));

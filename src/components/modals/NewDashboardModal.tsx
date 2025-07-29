@@ -46,10 +46,7 @@ export function NewDashboardModal({ isOpen, onClose }: NewDashboardModalProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Création nouveau tableau de bord:', {
-      ...formData,
-      widgets: selectedWidgets
-    });
+
     onClose();
   };
 

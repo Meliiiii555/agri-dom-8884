@@ -30,7 +30,7 @@ export function FeedbackModal({ isOpen, onClose, type, itemTitle }: FeedbackModa
   };
 
   const handleSubmit = () => {
-    console.log('Feedback submitted:', formData);
+
     onClose();
     // Ici vous pouvez ajouter la logique pour envoyer le feedback
   };

@@ -12,7 +12,7 @@ export function LibraryFormHandler() {
 
   useEffect(() => {
     const handleOpenLibraryForm = (event: CustomEvent) => {
-      console.log('Ouverture formulaire bibliothèque:', event.detail);
+
       const type = event.detail.resourceType;
       
       if (type === 'dictionnaire-juridique') {

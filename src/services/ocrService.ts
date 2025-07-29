@@ -99,7 +99,6 @@ export class AlgerianLegalOCRService {
    */
   async extractFromPDF(file: File): Promise<ExtractedData> {
     const startTime = Date.now();
-    console.log('🇩🇿 [OCR] Début de l\'extraction du document PDF');
 
     try {
       // Étape 1: Extraire les pages
@@ -111,8 +110,7 @@ export class AlgerianLegalOCRService {
       // Étape 2: Pour chaque page
       for (let pageIndex = 0; pageIndex < pages.length; pageIndex++) {
         const page = pages[pageIndex];
-        console.log(`🇩🇿 [OCR] Traitement de la page ${pageIndex + 1}/${pages.length}`);
-        
+
         // Étape 3: Détecter toutes les lignes horizontales et verticales
         const lines = await this.detectLines(page);
         
@@ -161,7 +159,6 @@ export class AlgerianLegalOCRService {
         structuredData
       };
 
-      console.log('🇩🇿 [OCR] Extraction terminée avec succès');
       return extractedData;
 
     } catch (error) {

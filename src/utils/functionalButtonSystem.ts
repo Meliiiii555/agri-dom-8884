@@ -248,8 +248,7 @@ export function makeFunctionalButtons(): void {
       }
     }
   });
-  
-  console.log(`🎯 Système fonctionnel: ${processedCount} boutons/liens rendus opérationnels`);
+
 }
 
 // Observer pour les nouveaux éléments ajoutés dynamiquement
@@ -295,8 +294,7 @@ export function initializeFunctionalSystem(): void {
   
   // Re-traitement périodique pour s'assurer que rien n'est manqué
   setInterval(makeFunctionalButtons, 5000);
-  
-  console.log('🚀 Système de boutons fonctionnels initialisé');
+
 }
 
 // Types pour les événements personnalisés

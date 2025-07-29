@@ -26,7 +26,6 @@ import { FileUploadField } from '@/components/procedure-form/FileUploadField';
 import { sanitizeDateForInput } from '@/utils/dateFormatter';
 import { ProcedureFormHeader } from '@/components/procedure-form/ProcedureForm/ProcedureFormHeader';
 
-
 interface ProcedureFormProps {
   onClose: () => void;
   onSubmit: (data: Record<string, unknown>) => void;
@@ -76,14 +75,10 @@ export function ProcedureForm({ onClose, onSubmit, ocrData, initialInputMethod =
   // Logs de debug optimisés - seulement en mode développement
   useEffect(() => {
     if (process.env.NODE_ENV === 'development') {
-      console.log('=== DEBUG ProcedureForm ===');
-      console.log('Nombre total de formulaires dans la bibliothèque:', customForms.length);
-      console.log('Formulaires de procédures filtrés:', procedureForms.length);
-      console.log('Formulaires de procédures uniques:', uniqueProcedureForms.length);
+
       const availableTypes = [...new Set(customForms.map(f => f.type))].filter(Boolean);
       const availableCategories = [...new Set(customForms.map(f => f.category))].filter(Boolean);
-      console.log('Types trouvés:', `(${availableTypes.length})`, availableTypes);
-      console.log('Catégories trouvées:', `(${availableCategories.length})`, availableCategories);
+
     }
   }, [customForms.length, procedureForms.length, uniqueProcedureForms.length]);
 
@@ -95,7 +90,7 @@ export function ProcedureForm({ onClose, onSubmit, ocrData, initialInputMethod =
 
     const handleOpenOCRTab = (event: CustomEvent) => {
       if (process.env.NODE_ENV === 'development') {
-        console.log('🎯 [ProcedureForm] Ouverture directe onglet OCR');
+
       }
       setInputMethod('ocr');
     };
@@ -112,7 +107,7 @@ export function ProcedureForm({ onClose, onSubmit, ocrData, initialInputMethod =
   useEffect(() => {
     if (ocrData) {
       if (process.env.NODE_ENV === 'development') {
-        console.log('🎯 [ProcedureForm] Traitement des données OCR reçues:', ocrData);
+
       }
       handleOCRFormDataExtracted({ documentType: 'procedure', formData: ocrData });
       setInputMethod('manual'); // Switch to manual mode to show filled form
@@ -182,8 +177,7 @@ export function ProcedureForm({ onClose, onSubmit, ocrData, initialInputMethod =
 
   const handleOCRFormDataExtracted = (data: { documentType: 'procedure', formData: Record<string, any> }) => {
     if (process.env.NODE_ENV === 'development') {
-      console.log('🇩🇿 [ProcedureForm] Réception des données OCR algériennes:', data);
-      console.log('📋 [ProcedureForm] Nombre de champs reçus:', Object.keys(data.formData).length);
+
     }
     
     if (data.documentType !== 'procedure') {
@@ -196,13 +190,13 @@ export function ProcedureForm({ onClose, onSubmit, ocrData, initialInputMethod =
     // Utiliser le mapping algérien spécialisé
     const algerianMappedData: Record<string, unknown> = mapAlgerianOCRDataToForm(data.formData, 'procedure');
     if (process.env.NODE_ENV === 'development') {
-      console.log('🇩🇿 [ProcedureForm] Données mappées avec nomenclature algérienne:', algerianMappedData);
+
     }
     
     // Validation spécifique aux documents algériens
     const validationResult = validateAlgerianDocument(data);
     if (process.env.NODE_ENV === 'development') {
-      console.log('✅ [ProcedureForm] Validation algérienne:', validationResult);
+
     }
     
     // Fallback sur le mapping générique si nécessaire
@@ -210,10 +204,7 @@ export function ProcedureForm({ onClose, onSubmit, ocrData, initialInputMethod =
     
     // Fusionner les deux mappings (priorité au mapping algérien)
     const mappedData: Record<string, unknown> = { ...genericMappedData, ...algerianMappedData };
-    console.log('📋 [ProcedureForm] Données finales fusionnées:', mappedData);
-    console.log('🔍 [ProcedureForm] Clés disponibles dans mappedData:', Object.keys(mappedData));
-    console.log('🔍 [ProcedureForm] Valeurs non vides:', Object.entries(mappedData).filter(([k, v]) => v && v !== ''));
-    
+
     // Mapping direct vers les champs exacts du formulaire ProcedureForm
     const completeFormData: Record<string, unknown> = {};
     
@@ -307,7 +298,7 @@ export function ProcedureForm({ onClose, onSubmit, ocrData, initialInputMethod =
         procedureCategory: matchingForm.name,
         ...completeFormData 
       }));
-      console.log('🎯 [ProcedureForm] Catégorie automatiquement sélectionnée:', matchingForm.name);
+
     } else {
       setFormData(prev => ({ ...prev, ...completeFormData }));
     }
@@ -375,20 +366,14 @@ export function ProcedureForm({ onClose, onSubmit, ocrData, initialInputMethod =
     }
     
     // Logs de debug du mapping
-    console.log('🎯 [ProcedureForm] Mapping terminé. Données à injecter:', completeFormData);
-    console.log('🎯 [ProcedureForm] Champs mappés:', Object.keys(completeFormData));
-    console.log('🎯 [ProcedureForm] Valeurs mappées non vides:', Object.entries(completeFormData).filter(([k, v]) => v && v !== ''));
-    
+
     // Mise à jour du formulaire avec toutes les données
     setFormData(prev => {
       const newFormData = { ...prev, ...completeFormData };
-      console.log('🎯 [ProcedureForm] FormData après injection:', newFormData);
+
       return newFormData;
     });
-    
-    console.log('✅ [ProcedureForm] Formulaire rempli avec', Object.keys(completeFormData).length, 'champs');
-    console.log('📋 [ProcedureForm] Données du formulaire final:', completeFormData);
-    
+
     // Afficher les informations de validation algérienne
     if (validationResult.confidence >= 80) {
       toast({
@@ -414,18 +399,14 @@ export function ProcedureForm({ onClose, onSubmit, ocrData, initialInputMethod =
     const filledFieldsCount = Object.values(completeFormData).filter(value => 
       value && value !== '' && !(Array.isArray(value) && value.length === 0)
     ).length;
-    
-    console.log('✅ [ProcedureForm] Formulaire rempli avec', Object.keys(completeFormData).length, 'champs');
-    console.log('📋 [ProcedureForm] Données du formulaire final:', completeFormData);
-    console.log('📊 [ProcedureForm] Nombre de champs remplis:', filledFieldsCount);
-    
+
     toast({
       title: "Formulaire rempli par OCR",
       description: `${filledFieldsCount} champs ont été remplis automatiquement. Redirection vers le formulaire...`,
     });
     
     // Redirection vers l'onglet formulaire avec un petit délai pour permettre aux données de se propager
-    console.log('🔄 [ProcedureForm] Basculement vers le mode manuel...');
+
     setTimeout(() => {
       setInputMethod('manual'); // Basculer vers le mode manuel pour afficher le formulaire
     }, 500);
@@ -441,7 +422,7 @@ export function ProcedureForm({ onClose, onSubmit, ocrData, initialInputMethod =
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Données de la procédure:', formData);
+
     onSubmit(formData);
     toast({
       title: "Procédure ajoutée",

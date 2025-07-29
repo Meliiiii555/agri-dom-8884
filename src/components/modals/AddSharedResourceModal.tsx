@@ -32,7 +32,7 @@ export function AddSharedResourceModal({ isOpen, onClose }: AddSharedResourceMod
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Ajout ressource partagée:', formData);
+
     onClose();
   };
 

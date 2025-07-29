@@ -134,10 +134,10 @@ export function AutonomousAgent() {
     
     if (!isAgentActive) {
       // Activation de l'agent autonome
-      console.log('Agent autonome activé - surveillance et actions automatiques en cours');
+
     } else {
       // Désactivation de l'agent autonome
-      console.log('Agent autonome désactivé');
+
     }
   };
 

@@ -492,8 +492,6 @@ const LegalTextsApprovalQueue: React.FC = () => {
             </div>
           </Card>
 
-
-
           {/* Documents */}
           <div className="space-y-3">
             {paginatedDocuments.map((doc) => (

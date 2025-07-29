@@ -55,17 +55,17 @@ export function RealLocalOCRProcessor({ onFormDataExtracted, onClose }: RealLoca
       setSystemStatus(prev => ({ ...prev, tesseract: 'Chargement...' }));
 
       // Import dynamique de Tesseract.js
-      console.log('📦 Importation de Tesseract.js...');
+
       const { createWorker } = await import('tesseract.js');
       
       setCurrentStep('Initialisation worker Tesseract (FR+AR)...');
       setInitProgress(30);
 
       // Création du worker avec langues FR + AR
-      console.log('🔧 Création du worker Tesseract...');
+
       const worker = await createWorker(['fra', 'ara'], 1, {
         logger: (m: any) => {
-          console.log('📖 [Tesseract]', m);
+
           if (m.status === 'recognizing text') {
             setCurrentStep(`OCR en cours: ${Math.round(m.progress * 100)}%`);
           }
@@ -89,7 +89,6 @@ export function RealLocalOCRProcessor({ onFormDataExtracted, onClose }: RealLoca
       setCurrentStep('Tesseract.js prêt !');
       setIsInitialized(true);
 
-      console.log('✅ Tesseract.js initialisé avec succès');
       toast({
         title: "🇩🇿 Tesseract.js Initialisé",
         description: "OCR FR+AR prêt pour l'extraction de documents juridiques",
@@ -158,16 +157,13 @@ export function RealLocalOCRProcessor({ onFormDataExtracted, onClose }: RealLoca
 
       // OCR RÉEL avec Tesseract.js
       setCurrentStep('Extraction OCR en cours...');
-      console.log('🔍 Début OCR avec Tesseract.js...');
-      
+
       const startTime = Date.now();
       const { data: { text, confidence } } = await tesseractWorker.recognize(imageToProcess);
       const processingTime = Date.now() - startTime;
 
       setCurrentStep('Analyse du texte extrait...');
       setProcessingProgress(80);
-
-      console.log('✅ OCR terminé:', { textLength: text.length, confidence, processingTime });
 
       // Analyse simple du texte (sans NLP complexe pour l'instant)
       const algerianLegalPatterns = {
@@ -328,7 +324,7 @@ export function RealLocalOCRProcessor({ onFormDataExtracted, onClose }: RealLoca
     if (tesseractWorker) {
       await tesseractWorker.terminate();
       setTesseractWorker(null);
-      console.log('🧹 Worker Tesseract nettoyé');
+
     }
   }, [tesseractWorker]);
 

@@ -102,7 +102,6 @@ export class AlgerianLegalAIMappingService {
    * Mapper les données OCR extraites vers les champs de formulaire
    */
   async mapToForm(extractedData: ExtractedData, formTemplate: Record<string, unknown>): Promise<MappingResult> {
-    console.log('🇩🇿 [AI Mapping] Début du mapping des données vers le formulaire');
 
     try {
       // Étape 1: Détecter les entités juridiques spécifiques
@@ -122,8 +121,6 @@ export class AlgerianLegalAIMappingService {
 
       // Étape 6: Calculer la confiance globale
       const confidence = this.calculateMappingConfidence(formData, suggestions, validationErrors, extractedData.confidence);
-
-      console.log('🇩🇿 [AI Mapping] Mapping terminé avec succès');
 
       return {
         formData,

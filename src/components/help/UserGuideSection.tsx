@@ -54,7 +54,7 @@ export function UserGuideSection() {
   // Fonction de recherche dans le guide utilisateur
   const handleSearchUserGuide = (query: string) => {
     // Recherche réelle dans le guide utilisateur
-    console.log(`Recherche guide utilisateur: ${query}`);
+
     // Ici on pourrait ouvrir une modale de résultats de recherche
   };
 

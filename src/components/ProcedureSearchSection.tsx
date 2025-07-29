@@ -282,55 +282,6 @@ export function ProcedureSearchSection() {
     data: popularItems,
     itemsPerPage: 10
   });
-    {
-      query: "Permis de conduire",
-      count: "18,901 recherches", 
-      category: "Transport",
-      wilaya: "National",
-      trend: "+8%",
-      description: "Permis biométrique catégories A, B, C"
-    },
-    {
-      query: "Carte d'identité nationale",
-      count: "22,345 recherches",
-      category: "État civil",
-      wilaya: "National",
-      trend: "+5%", 
-      description: "CIN biométrique avec puce électronique"
-    },
-    {
-      query: "Inscription universitaire",
-      count: "9,876 recherches",
-      category: "Éducation",
-      wilaya: "National",
-      trend: "+25%",
-      description: "Orientation et inscription MESRS"
-    },
-    {
-      query: "Certificat de résidence", 
-      count: "8,234 recherches",
-      category: "Administration",
-      wilaya: "Communal",
-      trend: "+7%",
-      description: "Attestation domicile APC"
-    },
-    {
-      query: "Agrément d'importation",
-      count: "7,456 recherches",
-      category: "Commercial",
-      wilaya: "National", 
-      trend: "+22%",
-      description: "Licence d'importation CNIS"
-    },
-    {
-      query: "Certificat médical",
-      count: "6,789 recherches",
-      category: "Santé",
-      wilaya: "National",
-      trend: "+15%",
-      description: "Aptitude physique et mentale"
-    }
-  ];
 
   const statistics = {
     monthlySearches: "247k",

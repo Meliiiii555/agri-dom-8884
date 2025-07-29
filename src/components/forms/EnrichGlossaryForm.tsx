@@ -63,7 +63,6 @@ export function EnrichGlossaryForm({ isOpen, onClose }: EnrichGlossaryFormProps)
       });
     }, 50);
 
-    console.log('Enrichissement du glossaire:', formData);
   };
 
   const handleReset = () => {

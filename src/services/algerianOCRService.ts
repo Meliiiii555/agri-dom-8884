@@ -36,7 +36,7 @@ class AlgerianOCRService {
   private isInitialized = false;
 
   constructor() {
-    console.log('🇩🇿 Service OCR Algérien initialisé - 100% local et indépendant');
+
   }
 
   /**
@@ -46,8 +46,7 @@ class AlgerianOCRService {
     if (this.isInitialized) return;
 
     try {
-      console.log('🚀 Initialisation des moteurs OCR algériens...');
-      
+
       // Worker pour le français (documents officiels algériens)
       const frenchWorker = await createWorker();
       await frenchWorker.loadLanguage('fra');
@@ -70,7 +69,7 @@ class AlgerianOCRService {
       this.workers.set('ara', arabicWorker);
 
       this.isInitialized = true;
-      console.log('✅ Moteurs OCR algériens prêts');
+
     } catch (error) {
       console.error('❌ Erreur initialisation OCR algérien:', error);
       throw new Error('Impossible d\'initialiser le service OCR algérien');
@@ -177,8 +176,7 @@ class AlgerianOCRService {
     }
 
     try {
-      console.log('🔍 Traitement OCR document algérien...');
-      
+
       // Détermine la langue à utiliser
       const targetLanguage = options.language || 'auto';
       
@@ -201,7 +199,7 @@ class AlgerianOCRService {
       let finalConfidence = ocrResult.data.confidence;
       
       if (options.language === 'auto' && detectedLanguage !== 'fra' && detectedLanguage !== 'mixed') {
-        console.log(`🔄 Re-traitement avec moteur ${detectedLanguage}`);
+
         const secondWorker = this.workers.get(detectedLanguage);
         if (secondWorker) {
           const secondResult = await secondWorker.recognize(file);
@@ -216,8 +214,6 @@ class AlgerianOCRService {
         : [];
 
       const processingTime = Date.now() - startTime;
-
-      console.log(`✅ OCR algérien terminé: ${entities.length} entités détectées en ${processingTime}ms`);
 
       return {
         text: finalText,
@@ -248,8 +244,7 @@ class AlgerianOCRService {
     summary: string;
     recommendations: string[];
   }> {
-    console.log('📋 Analyse spécialisée document juridique algérien...');
-    
+
     const ocrResult = await this.processDocument(file, {
       language: 'auto',
       detectEntities: true
@@ -300,12 +295,11 @@ class AlgerianOCRService {
    * Libère les ressources
    */
   async cleanup(): Promise<void> {
-    console.log('🧹 Nettoyage des ressources OCR algériennes...');
-    
+
     for (const [lang, worker] of this.workers) {
       try {
         await worker.terminate();
-        console.log(`✅ Worker ${lang} terminé`);
+
       } catch (error) {
         console.warn(`⚠️ Erreur terminaison worker ${lang}:`, error);
       }

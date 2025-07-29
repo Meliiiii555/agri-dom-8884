@@ -76,8 +76,7 @@ async function loadHuggingFaceModels() {
 
   try {
     isLoading = true;
-    console.log('🔄 Chargement des modèles IA (cela peut prendre quelques secondes)...');
-    
+
     // Import dynamique pour éviter de charger le WASM au démarrage
     const { pipeline, env } = await import('@huggingface/transformers');
     
@@ -98,7 +97,6 @@ async function loadHuggingFaceModels() {
       env
     };
 
-    console.log('✅ Modèles IA chargés avec succès');
     return huggingFaceCache;
   } catch (error) {
     console.error('❌ Erreur lors du chargement des modèles IA:', error);
@@ -202,11 +200,9 @@ class OptimizedOCRService {
     try {
       // Import dynamique de Tesseract pour éviter de le charger au démarrage
       const Tesseract = await import('tesseract.js');
-      
-      console.log('🔄 Analyse OCR de l\'image...');
+
       const { data: { text } } = await Tesseract.recognize(file, 'fra');
-      console.log('✅ OCR terminé');
-      
+
       return text;
     } catch (error) {
       console.error('Erreur OCR Tesseract:', error);
@@ -271,7 +267,6 @@ class OptimizedOCRService {
    */
   private async performAdvancedAnalysis(text: string, models: any): Promise<ExtractedData> {
     try {
-      console.log('🤖 Analyse IA avancée en cours...');
 
       // Classification du texte
       const classification = await models.textClassifier(text.substring(0, 512));
@@ -286,8 +281,6 @@ class OptimizedOCRService {
         position: { start: entity.start, end: entity.end },
         confidence: entity.score
       }));
-
-      console.log('✅ Analyse IA terminée');
 
       return {
         text,

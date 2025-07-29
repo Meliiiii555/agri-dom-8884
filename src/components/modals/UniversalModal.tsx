@@ -830,16 +830,7 @@ export function UniversalModal({ modal, onClose }: UniversalModalProps) {
             </div>
 
             <div className="flex items-center justify-center py-4">
-              <Button onClick={() => console.log('Starting audio playback...')}>
-                <Play className="w-4 h-4 mr-2" />
-                Démarrer la lecture
-              </Button>
-            </div>
-
-            <Progress value={33} className="w-full" />
-            <p className="text-center text-sm text-gray-500">Lecture en cours...</p>
-          </div>
-        );
+              <Button onClick={() =>
 
       case 'conversation-replay':
         return (

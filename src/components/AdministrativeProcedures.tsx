@@ -28,15 +28,12 @@ export function AdministrativeProcedures() {
   } | null>(null);
 
   const handleOCRDataExtracted = (data: { documentType: 'legal' | 'procedure', formData: Record<string, string | number> }) => {
-    console.log('🎯 [AdministrativeProcedures] Données OCR reçues:', data);
-    console.log('🔍 [AdministrativeProcedures] Type de document:', data.documentType);
-    console.log('📝 [AdministrativeProcedures] Données formulaire:', data.formData);
-    
+
     if (data.documentType === 'procedure') {
-      console.log('✅ [AdministrativeProcedures] Navigation vers le formulaire de procédure avec données OCR');
+
       setOcrData(data);
       setCurrentView('form');
-      console.log('🚀 [AdministrativeProcedures] currentView mis à jour vers "form"');
+
     } else {
       console.warn('⚠️ [AdministrativeProcedures] Type de document non compatible avec les procédures administratives');
     }
@@ -49,7 +46,7 @@ export function AdministrativeProcedures() {
     sector: string;
     complexity: string;
   }) => {
-    console.log('Procedure submitted:', data);
+
     setLastAddedProcedure(data);
     setCurrentView('list');
     setShowSummaryModal(true);
@@ -77,27 +74,27 @@ export function AdministrativeProcedures() {
   };
 
   const handleOpenApprovalQueue = () => {
-    console.log('Opening approval queue');
+
     setShowApprovalQueue(true);
   };
 
   const handleApproveFromQueue = (item: any, comment?: string) => {
-    console.log('Approuvé depuis la file:', item, comment);
+
   };
 
   const handleRejectFromQueue = (item: any, reason: string) => {
-    console.log('Rejeté depuis la file:', item, reason);
+
   };
 
   const handleViewFromQueue = (item: any) => {
-    console.log('Examen depuis la file:', item);
+
     setShowApprovalQueue(false);
   };
 
   // Écouter l'événement de navigation avec données OCR
   useEffect(() => {
     const handleNavigateWithOCR = (event: CustomEvent) => {
-      console.log('🎯 [AdministrativeProcedures] Réception événement OCR:', event.detail);
+
       setOcrData(event.detail.ocrData);
       setCurrentView('form');
     };

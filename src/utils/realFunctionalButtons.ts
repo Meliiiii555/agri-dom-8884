@@ -15,7 +15,7 @@ export class RealFunctionalSystem {
     this.setupGlobalEventListeners();
     this.makeAllButtonsFunctional();
     this.startObserver();
-    console.log('🎯 Système de boutons RÉELLEMENT fonctionnels activé');
+
   }
 
   private setupGlobalEventListeners() {
@@ -126,7 +126,7 @@ export class RealFunctionalSystem {
     
     // Si aucun mapping spécifique et que c'est un bouton important, ne pas créer d'interface générique
     else if (text.length > 2) {
-      console.log(`⚡ Bouton fonctionnel détecté: "${text}" - Action exécutée`);
+
       this.showToast(`Action "${text}" exécutée avec succès !`);
     }
   }
@@ -459,8 +459,6 @@ export class RealFunctionalSystem {
     return 'Formulaires Généraux';
   }
 
-
-
   private showToast(message: string) {
     // Toasts désactivés - Modification branche LYO
     return;
@@ -538,8 +536,7 @@ export class RealFunctionalSystem {
           count++;
         }
       });
-      
-      console.log(`🎯 ${count} boutons et liens rendus réellement fonctionnels`);
+
     }, 1000);
   }
 

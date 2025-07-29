@@ -54,7 +54,7 @@ export const validateFile = (file: File): { valid: boolean; error?: string } => 
 export const secureLog = {
   info: (message: string, data?: any) => {
     if (import.meta.env.DEV) {
-      console.log(`[INFO] ${message}`, data ? sanitizeLogData(data) : '');
+
     }
   },
   

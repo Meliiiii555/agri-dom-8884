@@ -32,8 +32,6 @@ export function AddDefinitionForm({ isOpen, onClose }: AddDefinitionFormProps) {
       return;
     }
 
-    console.log('Nouvelle définition juridique:', formData);
-    
     toast.success("Définition ajoutée avec succès", {
       description: `Le terme "${formData.term}" a été ajouté au glossaire juridique`,
     });

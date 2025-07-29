@@ -78,12 +78,12 @@ export function ComparativeAnalysis() {
   };
 
   const handleStartComparison = () => {
-    console.log('Lancement de la comparaison:', { comparisonType, period1, period2, selectedMetrics });
+
     setAnalysisStarted(true);
     
     // Simulation d'analyse IA
     setTimeout(() => {
-      console.log('Analyse comparative terminée');
+
     }, 2000);
   };
 

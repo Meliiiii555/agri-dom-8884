@@ -47,8 +47,7 @@ interface AlgerianDataWithMetadata {
  */
 export async function extractAndAdaptAlgerianDocument(file: File): Promise<AdaptedAlgerianData> {
   try {
-    console.log('🔄 Adaptation des données algériennes...');
-    
+
     // Extraire les données avec le nouveau système
     const algerianData = await extractAlgerianDataFromFile(file);
     
@@ -123,13 +122,7 @@ export async function extractAndAdaptAlgerianDocument(file: File): Promise<Adapt
     
     // Calculer un score de confiance basé sur la qualité des données extraites
     adaptedData.confidence = calculateExtractionConfidence(adaptedData);
-    
-    console.log('✅ Adaptation terminée:', {
-      format: adaptedData.documentFormat,
-      type: adaptedData.structuredData.type,
-      confidence: adaptedData.confidence
-    });
-    
+
     return adaptedData;
     
   } catch (error) {

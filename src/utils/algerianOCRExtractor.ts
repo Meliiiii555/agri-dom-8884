@@ -241,7 +241,7 @@ const ALGERIAN_PROCEDURE_PATTERNS = {
 };
 
 export function extractAlgerianLegalTextData(ocrText: string, language: 'fr' | 'ar' | 'mixed' = 'fr'): Partial<AlgerianLegalTextFormData> {
-  console.log('🇩🇿 Extraction OCR texte juridique algérien:', ocrText.substring(0, 200) + '...');
+
   const data: Partial<AlgerianLegalTextFormData> = {};
   
   // Extraction de l'en-tête officiel
@@ -407,13 +407,12 @@ export function extractAlgerianLegalTextData(ocrText: string, language: 'fr' | '
   
   // Contenu complet
   data.content = ocrText.trim();
-  
-  console.log('🇩🇿 Données juridiques algériennes extraites:', data);
+
   return data;
 }
 
 export function extractAlgerianProcedureData(ocrText: string, language: 'fr' | 'ar' | 'mixed' = 'fr'): Partial<AlgerianProcedureFormData> {
-  console.log('🇩🇿 Extraction OCR procédure administrative algérienne:', ocrText.substring(0, 200) + '...');
+
   const data: Partial<AlgerianProcedureFormData> = {};
   
   // Extraction du type de procédure
@@ -606,8 +605,7 @@ export function extractAlgerianProcedureData(ocrText: string, language: 'fr' | '
   
   // Description complète
   data.description = ocrText.trim();
-  
-  console.log('🇩🇿 Données procédure administrative algérienne extraites:', data);
+
   return data;
 }
 
@@ -617,8 +615,7 @@ export function extractAlgerianProcedureData(ocrText: string, language: 'fr' | '
  */
 export async function extractAlgerianDataFromFile(file: File): Promise<AlgerianLegalTextFormData | AlgerianProcedureFormData> {
   try {
-    console.log(`🇩🇿 Début de l'extraction depuis le fichier: ${file.name}`);
-    
+
     // Vérifier si le fichier est supporté
     if (!DocumentExtractor.isFileSupported(file)) {
       throw new Error(`Format de fichier non supporté: ${file.name}. Formats supportés: ${DocumentExtractor.getSupportedFormats().join(', ')}`);
@@ -626,9 +623,7 @@ export async function extractAlgerianDataFromFile(file: File): Promise<AlgerianL
 
     // Extraire le texte du document
     const extractedDoc: ExtractedDocument = await DocumentExtractor.extractText(file);
-    
-    console.log(`📄 Texte extrait depuis ${extractedDoc.format}:`, extractedDoc.text.substring(0, 200) + '...');
-    
+
     // Déterminer le type de document (juridique ou procédure)
     const documentType = determineAlgerianDocumentType(extractedDoc.text);
     
@@ -643,8 +638,7 @@ export async function extractAlgerianDataFromFile(file: File): Promise<AlgerianL
       (result as AlgerianProcedureFormData).documentFormat = extractedDoc.format;
       (result as AlgerianProcedureFormData).extractionMetadata = extractedDoc.metadata;
     }
-    
-    console.log(`🇩🇿 Extraction terminée depuis ${extractedDoc.format}. Type: ${documentType}`);
+
     return result;
     
   } catch (error) {

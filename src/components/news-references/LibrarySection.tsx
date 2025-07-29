@@ -11,12 +11,12 @@ export function LibrarySection() {
   const actions = useGlobalActions();
 
   const handleAdd = () => {
-    console.log('Opening add legal text form from library...');
+
     actions.handleAddLegalText();
   };
 
   const handleEnrich = () => {
-    console.log('Opening enrichment with file import from library...');
+
     actions.handleImport(['.pdf', '.doc', '.docx', '.txt']);
   };
 

@@ -22,7 +22,7 @@ export function LegalTextsEnrichmentTab({ onAddLegalText, onOCRTextExtracted, on
   const { showApiModal, apiContext, openApiModal, closeApiModal } = useApiModalHandler();
 
   const handleOCRExtracted = (text: string) => {
-    console.log('Texte OCR extrait:', text);
+
     if (onOCRTextExtracted) {
       onOCRTextExtracted(text);
     }
@@ -30,7 +30,7 @@ export function LegalTextsEnrichmentTab({ onAddLegalText, onOCRTextExtracted, on
   };
 
   const handleScanOCRClick = () => {
-    console.log('🎯 [LegalTextsEnrichmentTab] Redirection vers Extraction et Mapping');
+
     // Naviguer vers la section Extraction et Mapping
     const event = new CustomEvent('navigate-to-section', { 
       detail: 'ocr-extraction'
@@ -39,16 +39,13 @@ export function LegalTextsEnrichmentTab({ onAddLegalText, onOCRTextExtracted, on
   };
 
   const handleSmartOCRDataExtracted = (data: { documentType: 'legal' | 'procedure', formData: Record<string, any> }) => {
-    console.log('🎯 [LegalTextsEnrichmentTab] Données OCR extraites:', data);
-    console.log('📋 [LegalTextsEnrichmentTab] Type de document:', data.documentType);
-    console.log('📋 [LegalTextsEnrichmentTab] Nombre de champs:', Object.keys(data.formData).length);
-    
+
     // Passer les données au parent AVANT de fermer le scanner
     try {
-      console.log('📤 [LegalTextsEnrichmentTab] Transmission des données au parent...');
+
       if (onOCRDataExtracted) {
         onOCRDataExtracted(data);
-        console.log('✅ [LegalTextsEnrichmentTab] Données transmises avec succès');
+
       } else {
         console.warn('⚠️ [LegalTextsEnrichmentTab] Pas de callback onOCRDataExtracted défini');
         // Fallback: déclencher l'ouverture du formulaire manuel
@@ -60,7 +57,7 @@ export function LegalTextsEnrichmentTab({ onAddLegalText, onOCRTextExtracted, on
     
     // Fermer le scanner après transmission
     setTimeout(() => {
-      console.log('🔒 [LegalTextsEnrichmentTab] Fermeture du scanner');
+
       setShowOCRScanner(false);
     }, 100);
   };
@@ -82,7 +79,7 @@ export function LegalTextsEnrichmentTab({ onAddLegalText, onOCRTextExtracted, on
   };
 
   const handleAutoFillDataGenerated = (data: Record<string, unknown>) => {
-    console.log('Données auto-remplissage générées:', data);
+
     setShowAutoFill(false);
     
     // Déclencher l'événement pour remplir le formulaire
@@ -97,7 +94,7 @@ export function LegalTextsEnrichmentTab({ onAddLegalText, onOCRTextExtracted, on
   };
 
   if (showOCRScanner) {
-    console.log('🎯 [LegalTextsEnrichmentTab] Affichage du scanner OCR');
+
     return (
       <SmartOCRProcessor
         title="Scanner un document juridique"

@@ -119,14 +119,13 @@ class LegalRelationshipService {
    * Analyse le texte pour extraire toutes les relations juridiques
    */
   async analyzeRelationships(text: string, sourceDocument?: LegalDocumentRef): Promise<LegalRelationship[]> {
-    console.log('🔍 Starting legal relationship analysis...');
+
     const relationships: LegalRelationship[] = [];
 
     try {
       // Analyser chaque type de relation
       for (const [relationType, patterns] of Object.entries(this.relationshipPatterns)) {
-        console.log(`📋 Analyzing ${relationType} relationships...`);
-        
+
         const foundRelationships = await this.extractRelationshipsByType(
           text, 
           relationType as keyof typeof this.relationshipPatterns, 
@@ -140,7 +139,6 @@ class LegalRelationshipService {
       // Trier par position dans le texte
       relationships.sort((a, b) => a.textPosition.startIndex - b.textPosition.startIndex);
 
-      console.log(`✅ Found ${relationships.length} legal relationships`);
       return relationships;
 
     } catch (error) {
@@ -153,8 +151,7 @@ class LegalRelationshipService {
    * Construit un graphe de relations entre les documents
    */
   async buildRelationshipGraph(relationships: LegalRelationship[]): Promise<RelationshipGraph> {
-    console.log('🕸️ Building relationship graph...');
-    
+
     const documents = new Map<string, LegalDocumentRef>();
     const clusters: DocumentCluster[] = [];
 
@@ -181,7 +178,6 @@ class LegalRelationshipService {
       clusters
     };
 
-    console.log(`✅ Graph built: ${documents.size} documents, ${relationships.length} relationships, ${clusters.length} clusters`);
     return graph;
   }
 

@@ -408,27 +408,27 @@ export function NomenclatureSection({ language = "fr" }: NomenclatureSectionProp
 
   // Gestionnaires pour les modales
   const handleLegalTypeSave = (data: Record<string, unknown>) => {
-    console.log('Type de texte ajouté:', data);
+
     // Logique d'ajout du type de texte
   };
 
   const handleCategorySave = (data: Record<string, unknown>) => {
-    console.log('Catégorie ajoutée:', data);
+
     // Logique d'ajout de la catégorie
   };
 
   const handleDomainSave = (data: Record<string, unknown>) => {
-    console.log('Domaine ajouté:', data);
+
     // Logique d'ajout du domaine
   };
 
   const handleOrganizationSave = (data: Record<string, unknown>) => {
-    console.log('Organisation ajoutée:', data);
+
     // Logique d'ajout de l'organisation
   };
 
   const handleSignatorySave = (data: Record<string, unknown>) => {
-    console.log('Signataire ajouté:', data);
+
     // Logique d'ajout du signataire
   };
 

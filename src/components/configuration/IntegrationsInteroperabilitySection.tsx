@@ -50,7 +50,7 @@ export function IntegrationsInteroperabilitySection({ language = "fr" }: Integra
   const handleFormDataExtracted = (data: { documentType: 'legal' | 'procedure', formData: Record<string, any> }) => {
     setExtractedFormData(data);
     setShowOCRProcessor(false);
-    console.log('Données extraites:', data);
+
   };
 
   const activeIntegrations = [

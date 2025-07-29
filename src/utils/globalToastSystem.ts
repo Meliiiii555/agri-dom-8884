@@ -31,8 +31,7 @@ export function initializeGlobalToastSystem() {
       duration
     });
   });
-  
-  console.log('🔔 Système de toast global initialisé');
+
 }
 
 // Fonction utilitaire pour déclencher un toast depuis n'importe où

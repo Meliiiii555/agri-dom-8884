@@ -30,8 +30,7 @@ export function AlgerianProcedureOCRProcessor({
   const { mapAlgerianOCRDataToForm, validateAlgerianDocument } = useAlgerianNomenclatureData();
 
   const handleTextExtracted = async (text: string) => {
-    console.log('🇩🇿 [AlgerianProcedureOCRProcessor] Texte OCR extrait pour analyse procédure:', text.substring(0, 300) + '...');
-    
+
     setProcessingStage('Analyse de la procédure administrative algérienne...');
     
     // Détecter la langue du document (français/arabe/mixte)
@@ -119,32 +118,22 @@ export function AlgerianProcedureOCRProcessor({
     // Valider les données avec les référentiels algériens
     const validationResult = validateAlgerianDocument(parsedData);
     setConfidence(validationResult.confidence);
-    
-    console.log('🇩🇿 [AlgerianProcedureOCRProcessor] Données procédure parsées et validées:', parsedData);
-    console.log('🎯 [AlgerianProcedureOCRProcessor] Confiance:', validationResult.confidence + '%');
-    console.log('🏛️ [AlgerianProcedureOCRProcessor] Institution détectée:', detectedInstitution);
-    console.log('🗣️ [AlgerianProcedureOCRProcessor] Langue détectée:', language);
-    
+
     setExtractedData(parsedData);
     setShowScanner(false);
     setProcessingStage('Traitement terminé');
   };
 
   const handleValidateAndUse = () => {
-    console.log('✅ [AlgerianProcedureOCRProcessor] Validation et utilisation des données procédure:', extractedData);
+
     if (extractedData) {
-      console.log('📤 [AlgerianProcedureOCRProcessor] Envoi des données vers le formulaire parent');
-      console.log('🏛️ [AlgerianProcedureOCRProcessor] Type de document procédure:', extractedData.documentType);
-      console.log('📝 [AlgerianProcedureOCRProcessor] Données formulaire:', extractedData.formData);
-      console.log('📊 [AlgerianProcedureOCRProcessor] Nombre de champs dans formData:', Object.keys(extractedData.formData).length);
-      
+
       try {
         onFormDataExtracted(extractedData);
-        console.log('✅ [AlgerianProcedureOCRProcessor] Callback onFormDataExtracted appelé avec succès');
-        
+
         // Fermer le scanner après un délai pour permettre au parent de traiter
         if (onClose) {
-          console.log('🔒 [AlgerianProcedureOCRProcessor] Fermeture du scanner dans 100ms');
+
           setTimeout(() => {
             onClose();
           }, 100);

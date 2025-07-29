@@ -36,7 +36,7 @@ function App() {
       realFunctionalSystem.initialize();
       initializeFunctionalSystem();
       installSpecializedHandlers();
-      console.log('🎯 BRANCHE LYO: Tous les boutons et liens sont maintenant RÉELLEMENT fonctionnels');
+
     }, 2000);
   }, []);
 

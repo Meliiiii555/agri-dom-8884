@@ -205,7 +205,7 @@ export class RealActionHandler {
 
   // Actions pour les procédures
   private handleViewProcedure(event: CustomEvent) {
-    console.log('RealActionHandler: handleViewProcedure called with:', event.detail);
+
     const { procedureId, title } = event.detail;
     const procedure = this.store.getProcedure(procedureId);
     
@@ -292,7 +292,7 @@ export class RealActionHandler {
     const results = this.store.executeSavedSearch(searchId);
     // Suppression de l'affichage automatique des résultats de recherche
     // this.displaySearchResults(results);
-    console.log('Recherche sauvegardée exécutée:', searchId, results);
+
   }
 
   private handleEditSavedSearch(event: CustomEvent) {
@@ -545,7 +545,7 @@ export class RealActionHandler {
     const results = this.store.globalSearch(query);
     // Suppression de l'affichage automatique des résultats de recherche
     // this.displaySearchResults(results, query);
-    console.log('Recherche effectuée:', query, results);
+
   }
 
   private displaySearchResults(results: any, query?: string) {

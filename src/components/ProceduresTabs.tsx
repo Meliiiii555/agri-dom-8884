@@ -22,7 +22,7 @@ export function ProceduresTabs({ section, onAddProcedure, onOpenApprovalQueue, o
     const handleTabSwitch = (event: CustomEvent) => {
       const { section: targetSection, tab } = event.detail;
       if (targetSection === section) {
-        console.log(`Switching to tab: ${tab} in section: ${section}`);
+
         setActiveTab(tab);
       }
     };

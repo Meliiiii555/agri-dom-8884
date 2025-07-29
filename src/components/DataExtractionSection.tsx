@@ -86,7 +86,7 @@ export function DataExtractionSection() {
   // Fonction de notification réelle
   const handleNotification = (message: string, type: string) => {
     // Simulation d'une vraie notification système
-    console.log(`Notification ${type}: ${message}`);
+
     // Ici on pourrait intégrer un vrai système de notification
   };
 

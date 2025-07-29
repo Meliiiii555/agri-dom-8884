@@ -94,9 +94,6 @@ export function useOCRScanner(): UseOCRScannerReturn {
       const { data: { text, confidence } } = await worker.recognize(imageSource);
       await worker.terminate();
 
-      console.log('🇩🇿 OCR Text extracted with Algerian configuration:', text.substring(0, 200) + '...');
-      console.log('🎯 OCR Confidence:', confidence + '%');
-
       return {
         text: text.trim(),
         confidence: Math.round(confidence)

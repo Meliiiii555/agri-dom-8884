@@ -17,19 +17,17 @@ export function LegalTextFormOCRSection({
   
   const handleOCRFormDataExtracted = (data: { documentType: 'legal' | 'procedure', formData: Record<string, any> }) => {
     if (process.env.NODE_ENV === 'development') {
-      console.log('🎯 [LegalTextFormOCRSection] Données OCR extraites:', data);
-      console.log('📋 [LegalTextFormOCRSection] Type de document:', data.documentType);
-      console.log('📋 [LegalTextFormOCRSection] Nombre de champs:', Object.keys(data.formData).length);
+
     }
     
     // Passer les données au parent AVANT de fermer le scanner
     try {
       if (process.env.NODE_ENV === 'development') {
-        console.log('📤 [LegalTextFormOCRSection] Transmission des données au parent...');
+
       }
       onOCRFormDataExtracted(data);
       if (process.env.NODE_ENV === 'development') {
-        console.log('✅ [LegalTextFormOCRSection] Données transmises avec succès');
+
       }
     } catch (error) {
       if (process.env.NODE_ENV === 'development') {
@@ -40,7 +38,7 @@ export function LegalTextFormOCRSection({
     // Fermer le scanner OCR après transmission
     setTimeout(() => {
       if (process.env.NODE_ENV === 'development') {
-        console.log('🔒 [LegalTextFormOCRSection] Fermeture du scanner');
+
       }
       onShowOCRScanner(false);
     }, 100);

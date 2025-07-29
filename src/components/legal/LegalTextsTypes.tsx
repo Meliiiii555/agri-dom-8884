@@ -157,7 +157,7 @@ export function LegalTextsTypes() {
                     size="sm" 
                     className="w-full"
                     onClick={() => {
-                      console.log('Browsing legal text type:', type.name);
+
                       window.dispatchEvent(new CustomEvent('browse-legal-type', { 
                         detail: { 
                           typeId: type.id,

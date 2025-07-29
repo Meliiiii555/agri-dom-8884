@@ -5,10 +5,7 @@ import { extractTextFromPDF } from './pdfExtractionService';
 const initializeTesseract = async () => {
   try {
     const worker = await createWorker('fra+ara', 1, {
-      logger: m => console.log('OCR Progress:', m),
-      corePath: '/tesseract-core.wasm.js',
-      workerPath: '/tesseract-worker.js',
-    });
+      logger: m =>
     return worker;
   } catch (error) {
     console.warn('Tesseract initialization failed, using fallback:', error);
@@ -95,8 +92,7 @@ export const processDocumentOCR = async (file: File): Promise<RealOCRResult> => 
   const startTime = Date.now();
   
   try {
-    console.log('🔄 Début du traitement OCR réel pour:', file.name);
-    
+
     // Étape 1: Extraction du texte
     const extractedText = await extractPDFText(file);
     
@@ -130,8 +126,7 @@ export const processDocumentOCR = async (file: File): Promise<RealOCRResult> => 
         extractionDate: new Date()
       }
     };
-    
-    console.log('✅ Traitement OCR réel terminé en', processingTime, 'ms');
+
     return result;
     
   } catch (error) {

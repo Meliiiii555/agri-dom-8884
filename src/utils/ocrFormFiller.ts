@@ -61,8 +61,7 @@ export function extractLegalTextData(ocrText: string): Partial<LegalTextFormData
   const typeMatches = ocrText.match(patterns.type);
   if (typeMatches && typeMatches.length > 0) {
     const detectedType = typeMatches[0].toLowerCase();
-    console.log('Type détecté:', detectedType);
-    
+
     if (detectedType.includes('loi')) {
       data.type = 'loi';
     } else if (detectedType.includes('décret')) {
@@ -84,56 +83,56 @@ export function extractLegalTextData(ocrText: string): Partial<LegalTextFormData
   const authorityMatches = ocrText.match(patterns.authority);
   if (authorityMatches && authorityMatches.length > 0) {
     data.authority = authorityMatches[0];
-    console.log('Autorité détectée:', data.authority);
+
   }
 
   // Extraction du domaine juridique
   const domainMatches = ocrText.match(patterns.domain);
   if (domainMatches && domainMatches.length > 0) {
     data.category = domainMatches[0].toLowerCase();
-    console.log('Domaine détecté:', data.category);
+
   }
 
   // Extraction du titre améliorée
   const titleMatches = ocrText.match(patterns.title);
   if (titleMatches && titleMatches.length > 0) {
     data.title = titleMatches[0].trim();
-    console.log('Titre détecté:', data.title);
+
   }
 
   // Extraction de l'en-tête
   const headerMatches = ocrText.match(patterns.header);
   if (headerMatches && headerMatches.length > 0) {
     data.en_tete = headerMatches[0];
-    console.log('En-tête détecté:', data.en_tete);
+
   }
 
   // Extraction de la description/objet
   const descriptionMatches = ocrText.match(patterns.description);
   if (descriptionMatches && descriptionMatches.length > 0) {
     data.description = descriptionMatches[0].replace(/^objet\s*[:]\s*/i, '').trim();
-    console.log('Description détectée:', data.description);
+
   }
 
   // Extraction du signataire
   const signatoryMatches = ocrText.match(patterns.signatory);
   if (signatoryMatches && signatoryMatches.length > 0) {
     data.authority = signatoryMatches[0];
-    console.log('Signataire détecté:', data.authority);
+
   }
 
   // Extraction de la langue
   const languageMatches = ocrText.match(patterns.language);
   if (languageMatches && languageMatches.length > 0) {
     data.language = languageMatches[0].toLowerCase();
-    console.log('Langue détectée:', data.language);
+
   }
 
   // Extraction de la référence
   const refMatches = ocrText.match(patterns.reference);
   if (refMatches && refMatches.length > 0) {
     data.reference = refMatches[refMatches.length - 1]; // Prendre la dernière occurrence
-    console.log('Référence détectée:', data.reference);
+
   }
 
   // Extraction du numéro de journal
@@ -142,7 +141,7 @@ export function extractLegalTextData(ocrText: string): Partial<LegalTextFormData
     const match = journalMatches[0].match(/(\d+)/);
     if (match) {
       data.journal_numero = match[1];
-      console.log('Journal N° détecté:', data.journal_numero);
+
     }
   }
 
@@ -152,7 +151,7 @@ export function extractLegalTextData(ocrText: string): Partial<LegalTextFormData
     const match = pageMatches[0].match(/(\d+)/);
     if (match) {
       data.numero_page = parseInt(match[1]);
-      console.log('Page détectée:', data.numero_page);
+
     }
   }
 
@@ -176,7 +175,7 @@ export function extractLegalTextData(ocrText: string): Partial<LegalTextFormData
         
         if (!isNaN(date.getTime())) {
           data.date_journal = date.toISOString().split('T')[0];
-          console.log('Date détectée:', data.date_journal);
+
         }
       }
     } catch (e) {
@@ -193,7 +192,7 @@ export function extractLegalTextData(ocrText: string): Partial<LegalTextFormData
       
     if (lines.length > 0) {
       data.title = lines[0];
-      console.log('Titre par défaut détecté:', data.title);
+
     }
   }
 
@@ -204,18 +203,17 @@ export function extractLegalTextData(ocrText: string): Partial<LegalTextFormData
     
   if (headerLines.length > 0) {
     data.en_tete = headerLines[0];
-    console.log('En-tête détecté:', data.en_tete);
+
   }
 
   // Contenu complet
   data.content = ocrText.trim();
 
-  console.log('Données extraites finales:', data);
   return data;
 }
 
 export function extractProcedureData(ocrText: string): Partial<ProcedureFormData> {
-  console.log('Extraction OCR procédure du texte:', ocrText.substring(0, 200) + '...');
+
   const data: Partial<ProcedureFormData> = {};
   
   // Patterns pour les procédures administratives
@@ -234,8 +232,7 @@ export function extractProcedureData(ocrText: string): Partial<ProcedureFormData
   const typeMatches = ocrText.match(patterns.type);
   if (typeMatches && typeMatches.length > 0) {
     const detectedType = typeMatches[0].toLowerCase();
-    console.log('Type de procédure détecté:', detectedType);
-    
+
     if (detectedType.includes('demande')) data.type = 'Demande';
     else if (detectedType.includes('autorisation')) data.type = 'Autorisation';
     else if (detectedType.includes('licence')) data.type = 'Licence';
@@ -250,8 +247,7 @@ export function extractProcedureData(ocrText: string): Partial<ProcedureFormData
   const sectorMatches = ocrText.match(patterns.sector);
   if (sectorMatches && sectorMatches.length > 0) {
     const detectedSector = sectorMatches[0].toLowerCase();
-    console.log('Secteur détecté:', detectedSector);
-    
+
     if (detectedSector.includes('commerce')) data.sector = 'Commerce';
     else if (detectedSector.includes('industrie')) data.sector = 'Commerce'; // Map to Commerce
     else if (detectedSector.includes('agriculture')) data.sector = 'Agriculture';
@@ -269,7 +265,7 @@ export function extractProcedureData(ocrText: string): Partial<ProcedureFormData
     const match = refMatches[0].match(/([A-Z0-9-/]+)$/);
     if (match) {
       data.reference = match[1];
-      console.log('Référence détectée:', data.reference);
+
     }
   }
 
@@ -279,7 +275,7 @@ export function extractProcedureData(ocrText: string): Partial<ProcedureFormData
     const match = titleMatches[0].match(/(?:de|d'|pour)\s+([^.]+)/i);
     if (match) {
       data.name = match[1].trim();
-      console.log('Nom de procédure détecté:', data.name);
+
     }
   }
 
@@ -290,13 +286,12 @@ export function extractProcedureData(ocrText: string): Partial<ProcedureFormData
       .filter(line => line.length > 10 && !line.match(/date|page|n°/i));
     if (lines.length > 0) {
       data.name = lines[0];
-      console.log('Nom par défaut:', data.name);
+
     }
   }
 
   // Description complète
   data.description = ocrText.trim();
 
-  console.log('Données de procédure extraites:', data);
   return data;
 }

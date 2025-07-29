@@ -185,8 +185,6 @@ export function TechnicalSpecification({ activeTab }: TechnicalSpecificationProp
     }
   ];
 
-
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'Stable': return 'bg-green-100 text-green-800';

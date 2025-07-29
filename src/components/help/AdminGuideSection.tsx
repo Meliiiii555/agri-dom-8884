@@ -44,7 +44,7 @@ import { AdminUserManagementModal } from '@/components/modals/AdminUserManagemen
 import { VideoPlayerModal } from '@/components/modals/VideoPlayerModal';
 
 export function AdminGuideSection() {
-  console.log('AdminGuideSection rendering...');
+
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedModule, setSelectedModule] = useState('all');
 
@@ -443,8 +443,6 @@ export function AdminGuideSection() {
     document.body.removeChild(link);
   };
 
-
-
   return (
     <div className="space-y-6">
       <div className="text-center">
@@ -470,7 +468,7 @@ export function AdminGuideSection() {
               />
               <Button
                 onClick={() => {
-                  console.log('Searching admin documentation:', searchTerm);
+
                   // Simulate search functionality
                   window.dispatchEvent(new CustomEvent('show-notification', { 
                     detail: { 
@@ -606,7 +604,7 @@ export function AdminGuideSection() {
                             size="sm" 
                             variant="ghost"
                             onClick={() => {
-                              console.log('Downloading article');
+
                               window.dispatchEvent(new CustomEvent('download-article', { 
                                 detail: { articleId: article.id }
                               }));
@@ -1176,7 +1174,6 @@ export function AdminGuideSection() {
           </div>
         </CardContent>
       </Card>
-
 
       {/* Modale de gestion des utilisateurs */}
       {showUserManagementModal && (

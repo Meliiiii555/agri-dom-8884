@@ -358,7 +358,7 @@ export function SecureFileSharing() {
                           variant="outline" 
                           size="sm"
                           onClick={() => {
-                            console.log('Viewing resource:', resource.title);
+
                             window.dispatchEvent(new CustomEvent('view-resource', { 
                               detail: { resourceId: resource.id }
                             }));
@@ -370,7 +370,7 @@ export function SecureFileSharing() {
                           variant="outline" 
                           size="sm"
                           onClick={() => {
-                            console.log('Downloading resource:', resource.title);
+
                             window.dispatchEvent(new CustomEvent('download-resource', { 
                               detail: { resourceId: resource.id }
                             }));

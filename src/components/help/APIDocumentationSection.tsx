@@ -100,8 +100,7 @@ const response = await fetch('/api/auth/login', {
   })
 });
 
-const data = await response.json();
-console.log(data);`,
+const data = await response.json();`,
 
     python: `import requests
 
@@ -157,7 +156,7 @@ curl -X POST "/api/auth/login" \\
   // Fonction de recherche API
   const handleSearchApi = (query: string) => {
     // Recherche réelle dans la documentation API
-    console.log(`Recherche API: ${query}`);
+
     // Ici on pourrait ouvrir une modale de résultats de recherche
   };
 

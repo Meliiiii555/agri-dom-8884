@@ -382,11 +382,6 @@ export function DZOCRIAProcessor({ language = "fr" }: DZOCRIAProcessorProps) {
         totalProcessingTime: prev.totalProcessingTime + processingTime
       }));
 
-      console.log('🇩🇿 DZ OCR-IA Processing completed successfully:', {
-        extraction: extractionResult,
-        mapping: mappingResult
-      });
-
     } catch (error) {
       console.error('🇩🇿 Processing failed:', error);
       setProcessingStep(`❌ Erreur: ${error instanceof Error ? error.message : 'Erreur inconnue'}`);
@@ -402,7 +397,7 @@ export function DZOCRIAProcessor({ language = "fr" }: DZOCRIAProcessorProps) {
   const simulateNLPProcessing = async (): Promise<void> => {
     return new Promise(resolve => {
       setTimeout(() => {
-        console.log('🧠 NLP Processing simulation: Entity recognition and relation extraction completed');
+
         resolve();
       }, 1000);
     });
@@ -500,8 +495,7 @@ export function DZOCRIAProcessor({ language = "fr" }: DZOCRIAProcessorProps) {
 
     try {
       // Simulation de l'enregistrement dans le workflow
-      console.log('💾 Saving to approval workflow...');
-      
+
       const approvalData = {
         documentType: 'legal_text',
         extractedData,

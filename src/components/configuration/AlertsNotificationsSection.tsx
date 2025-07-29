@@ -317,8 +317,9 @@ export function AlertsNotificationsSection({ language = "fr" }: AlertsNotificati
                     </div>
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+                </Card>
+              ))}
+            </div>
           </div>
           
           {/* Pagination pour les alertes générales */}
@@ -368,7 +369,7 @@ export function AlertsNotificationsSection({ language = "fr" }: AlertsNotificati
           <div className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {paginatedPersonalizedAlerts.map((alert) => (
-              <Card key={alert.id}>
+                <Card key={alert.id}>
                 <CardHeader className="pb-4">
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-lg">{alert.name}</CardTitle>
@@ -658,7 +659,7 @@ export function AlertsNotificationsSection({ language = "fr" }: AlertsNotificati
         alertTypes={alertTypes}
         alertChannels={alertChannels}
         onSave={(alertData) => {
-          console.log('Nouvelle alerte créée:', alertData);
+
           // Ici vous pourriez ajouter la logique pour sauvegarder l'alerte
         }}
       />
@@ -667,7 +668,7 @@ export function AlertsNotificationsSection({ language = "fr" }: AlertsNotificati
         isOpen={isNewPersonalizedAlertModalOpen}
         onClose={() => setIsNewPersonalizedAlertModalOpen(false)}
         onSave={(alertData) => {
-          console.log('Nouvelle alerte personnalisée créée:', alertData);
+
         }}
       />
 
@@ -675,7 +676,7 @@ export function AlertsNotificationsSection({ language = "fr" }: AlertsNotificati
         isOpen={isNewDeadlineModalOpen}
         onClose={() => setIsNewDeadlineModalOpen(false)}
         onSave={(deadlineData) => {
-          console.log('Nouvelle échéance créée:', deadlineData);
+
         }}
       />
 
@@ -683,7 +684,7 @@ export function AlertsNotificationsSection({ language = "fr" }: AlertsNotificati
         isOpen={isNewAlertTypeModalOpen}
         onClose={() => setIsNewAlertTypeModalOpen(false)}
         onSave={(typeData) => {
-          console.log('Nouveau type d\'alerte créé:', typeData);
+
         }}
       />
 
@@ -691,7 +692,7 @@ export function AlertsNotificationsSection({ language = "fr" }: AlertsNotificati
         isOpen={isNewChannelModalOpen}
         onClose={() => setIsNewChannelModalOpen(false)}
         onSave={(channelData) => {
-          console.log('Nouveau canal créé:', channelData);
+
         }}
       />
 

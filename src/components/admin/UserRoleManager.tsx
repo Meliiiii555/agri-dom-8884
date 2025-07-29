@@ -33,8 +33,7 @@ export function UserRoleManager() {
 
   const fetchUsers = async () => {
     try {
-      console.log('Fetching users and profiles...');
-      
+
       // Récupérer tous les profils utilisateur
       const { data: profiles, error: profilesError } = await supabase
         .from('profiles')
@@ -44,8 +43,6 @@ export function UserRoleManager() {
         console.error('Error fetching profiles:', profilesError);
         throw profilesError;
       }
-
-      console.log('Profiles fetched:', profiles);
 
       // Récupérer tous les rôles utilisateur
       const { data: roles, error: rolesError } = await supabase
@@ -57,8 +54,6 @@ export function UserRoleManager() {
         throw rolesError;
       }
 
-      console.log('Roles fetched:', roles);
-
       // Combiner les profils avec leurs rôles
       const usersWithRoles = profiles?.map(profile => {
         const userRole = roles?.find(r => r.user_id === profile.id);
@@ -68,7 +63,6 @@ export function UserRoleManager() {
         };
       }) || [];
 
-      console.log('Users with roles:', usersWithRoles);
       setUsers(usersWithRoles);
     } catch (error) {
       console.error('Erreur lors de la récupération des utilisateurs:', error);
@@ -84,8 +78,7 @@ export function UserRoleManager() {
 
   const updateUserRole = async (userId: string, newRole: string) => {
     try {
-      console.log('Updating role for user:', userId, 'to:', newRole);
-      
+
       // Type guard to ensure newRole is a valid AppRole
       if (!['admin', 'juriste', 'citoyen'].includes(newRole)) {
         throw new Error('Invalid role');

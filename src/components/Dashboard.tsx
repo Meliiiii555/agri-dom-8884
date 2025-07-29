@@ -119,7 +119,7 @@ export function Dashboard({ language = "fr" }: DashboardProps) {
   };
 
   const handleAIAssistantClick = () => {
-    console.log('AI Assistant button clicked - dispatching event to ai-assistant');
+
     window.dispatchEvent(new CustomEvent('navigate-to-section', { detail: 'ai-assistant' }));
   };
 

@@ -153,8 +153,7 @@ export function UnifiedAIAssistant() {
 
   const handleSearch = async (query: string) => {
     setIsProcessing(true);
-    console.log('Recherche IA unifiée:', query);
-    
+
     // Simulation du traitement IA
     setTimeout(() => {
       setIsProcessing(false);
@@ -162,7 +161,7 @@ export function UnifiedAIAssistant() {
   };
 
   const handleQuickAction = (action: string) => {
-    console.log('Action rapide IA:', action);
+
   };
 
   return (

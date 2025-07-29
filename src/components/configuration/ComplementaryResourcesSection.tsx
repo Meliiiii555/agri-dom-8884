@@ -100,27 +100,27 @@ export function ComplementaryResourcesSection({ language = "fr" }: Complementary
   // Handlers pour sauvegarder les nouvelles entrées
   const handleSaveSource = (sourceData: Record<string, unknown>) => {
     setJuridicalSources([...juridicalSources, sourceData]);
-    console.log('Nouvelle source ajoutée:', sourceData);
+
   };
 
   const handleSaveDatabase = (dbData: Record<string, unknown>) => {
     setDatabases([...databases, dbData]);
-    console.log('Nouvelle base de données configurée:', dbData);
+
   };
 
   const handleSaveTemplate = (templateData: Record<string, unknown>) => {
     setDocumentTemplates([...documentTemplates, templateData]);
-    console.log('Nouveau modèle créé:', templateData);
+
   };
 
   const handleSaveWorkflow = (workflowData: Record<string, unknown>) => {
     setWorkflowModels([...workflowModels, workflowData]);
-    console.log('Nouveau workflow créé:', workflowData);
+
   };
 
   const handleSaveApi = (apiData: Record<string, unknown>) => {
     setApiConnections([...apiConnections, apiData]);
-    console.log('Nouvelle API ajoutée:', apiData);
+
   };
 
   // Filtrage des données

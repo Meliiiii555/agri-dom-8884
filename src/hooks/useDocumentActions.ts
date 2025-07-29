@@ -5,7 +5,7 @@ export function useDocumentActions() {
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handlePDFView = (title: string, url?: string) => {
-    console.log('Ouverture PDF:', title, url);
+
     const event = new CustomEvent('open-modal', {
       detail: {
         type: 'pdf-viewer',
@@ -17,7 +17,7 @@ export function useDocumentActions() {
   };
 
   const handleShare = (title: string, url?: string) => {
-    console.log('Partage:', title, url);
+
     if (navigator.share) {
       navigator.share({
         title: title,
@@ -30,8 +30,7 @@ export function useDocumentActions() {
   };
 
   const handleDownload = (filename: string, url?: string) => {
-    console.log('Téléchargement:', filename, url);
-    
+
     // Toast de début
     const startEvent = new CustomEvent('show-toast', {
       detail: {
@@ -83,7 +82,7 @@ export function useDocumentActions() {
   };
 
   const handleImport = (acceptedTypes?: string[]) => {
-    console.log('Import de fichiers:', acceptedTypes);
+
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = acceptedTypes?.join(',') || '*';
@@ -91,7 +90,7 @@ export function useDocumentActions() {
     input.onchange = (e) => {
       const files = (e.target as HTMLInputElement).files;
       if (files) {
-        console.log('Fichiers importés:', Array.from(files).map(f => f.name));
+
         setIsProcessing(true);
         setTimeout(() => {
           setIsProcessing(false);
@@ -103,7 +102,7 @@ export function useDocumentActions() {
   };
 
   const handleExport = (data: Record<string, unknown>[], filename: string) => {
-    console.log('Export des données:', data, filename);
+
     const jsonData = JSON.stringify(data, null, 2);
     const blob = new Blob([jsonData], { type: 'application/json' });
     const url = URL.createObjectURL(blob);

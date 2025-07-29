@@ -172,15 +172,15 @@ export function UserManagementSection({ language = "fr" }: UserManagementSection
 
   // Handler functions
   const handleSaveUser = (userData: Record<string, unknown>) => {
-    console.log('Nouvel utilisateur créé:', userData);
+
   };
 
   const handleSaveRole = (roleData: Record<string, unknown>) => {
-    console.log('Nouveau rôle créé:', roleData);
+
   };
 
   const handleSavePermission = (permissionData: Record<string, unknown>) => {
-    console.log('Nouvelle permission créée:', permissionData);
+
   };
 
   return (

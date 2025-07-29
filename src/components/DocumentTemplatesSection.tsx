@@ -114,7 +114,7 @@ export function DocumentTemplatesSection() {
           onClose={() => setShowNewTemplateModal(false)}
           onSave={(data) => {
             // Sauvegarde du modèle dans la base de données
-            console.log('Modèle sauvegardé:', data);
+
             setShowNewTemplateModal(false);
           }}
         />

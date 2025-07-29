@@ -63,7 +63,7 @@ export function ForumActionModal({ isOpen, onClose, action }: ForumActionModalPr
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(`Action forum ${action}:`, formData);
+
     onClose();
   };
 

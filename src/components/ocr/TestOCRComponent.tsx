@@ -14,17 +14,17 @@ export function TestOCRComponent({ onFormDataExtracted, onClose }: TestOCRCompon
 
   const handleTest = () => {
     setTestCount(prev => prev + 1);
-    console.log('✅ Test OCR Component fonctionne !');
+
     alert('✅ Test réussi ! Le composant fonctionne correctement.');
     
     if (onFormDataExtracted) {
-      console.log('📤 Envoi des données de test...');
+
       onFormDataExtracted({
         documentType: 'legal',
         formData: { test: 'données de test' }
       });
     } else {
-      console.log('⚠️ onFormDataExtracted non défini');
+
     }
   };
 

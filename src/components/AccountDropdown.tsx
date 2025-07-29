@@ -48,7 +48,7 @@ export function AccountDropdown({ onSectionChange }: AccountDropdownProps = {}) 
         setAboutOpen(true);
         break;
       case 'logout':
-        console.log('Déconnexion');
+
         break;
     }
   };

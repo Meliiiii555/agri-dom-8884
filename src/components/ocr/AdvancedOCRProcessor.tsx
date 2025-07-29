@@ -95,8 +95,6 @@ export function AdvancedOCRProcessor({
       return;
     }
 
-    console.log(`📄 Fichier sélectionné: ${file.name} (${file.type || 'type non détecté'}) - ${(file.size / 1024 / 1024).toFixed(2)} MB`);
-    
     setCurrentFile(file);
     setError(null);
     await processDocument(file);
@@ -116,8 +114,7 @@ export function AdvancedOCRProcessor({
     })));
 
     try {
-      console.log('🇩🇿 Début du traitement avancé du document juridique algérien');
-      
+
       // Étape 1: Extraction et structuration
       updateStage(0, 'processing', 0, 'Conversion du document...');
               const extractedData = await optimizedOCRService.extractAdvanced(file);

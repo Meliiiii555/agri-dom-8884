@@ -26,7 +26,7 @@ export function AddNewsForm({ isOpen, onClose }: AddNewsFormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Nouvelle actualité:', formData);
+
     toast({
       title: "Actualité ajoutée",
       description: `L'actualité "${formData.title}" a été ajoutée avec succès.`,

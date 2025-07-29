@@ -216,7 +216,6 @@ export function addUniversalButtonHandlers() {
       linkElement.addEventListener('click', handler);
     });
 
-    console.log(`🎯 ${buttons.length} boutons et ${links.length} liens ont été enrichis avec des handlers universels`);
   }, 1000);
 }
 
@@ -308,6 +307,5 @@ export function initializeUniversalButtonHandlers() {
   
   // Re-scanner périodiquement pour les boutons manqués
   setInterval(addUniversalButtonHandlers, 5000);
-  
-  console.log('🚀 Système de handlers universels initialisé');
+
 }

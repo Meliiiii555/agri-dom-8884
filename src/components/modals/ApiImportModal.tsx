@@ -125,7 +125,7 @@ export function ApiImportModal({ isOpen, onClose, context }: ApiImportModalProps
   const handleScheduleImport = () => {
     const message = `Import programmé: ${scheduleFrequency} pour ${selectedApis.length} API(s)`;
     setImportLog([`⏰ ${message}`]);
-    console.log('Import programmé:', { selectedApis, frequency: scheduleFrequency, context });
+
   };
 
   return (

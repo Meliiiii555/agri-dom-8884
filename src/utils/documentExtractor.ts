@@ -23,8 +23,6 @@ export class DocumentExtractor {
   static async extractText(file: File): Promise<ExtractedDocument> {
     const fileName = file.name.toLowerCase();
     const fileType = file.type.toLowerCase();
-    
-    console.log(`🔍 Extraction du texte depuis: ${file.name} (${file.type})`);
 
     // PDF
     if (fileType.includes('pdf') || fileName.endsWith('.pdf')) {
@@ -183,14 +181,12 @@ export class DocumentExtractor {
             };
             
             URL.revokeObjectURL(imageUrl);
-            
-            console.log('🔍 Début de l\'extraction OCR de l\'image...');
-            
+
             // Utiliser Tesseract.js pour l'OCR
             const { data: { text } } = await Tesseract.recognize(file, 'fra+ara', {
               logger: m => {
                 if (m.status === 'recognizing text') {
-                  console.log(`OCR Progress: ${Math.round(m.progress * 100)}%`);
+
                 }
               }
             });

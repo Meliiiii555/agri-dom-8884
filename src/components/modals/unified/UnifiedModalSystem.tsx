@@ -308,7 +308,7 @@ export function UnifiedModalSystem({ activeSection }: UnifiedModalSystemProps) {
             <div className="text-sm text-yellow-800">Rapide</div>
           </div>
           <div className="text-center p-3 bg-green-100 rounded">
-            <div className="text-2xl font-bold text-green-600">> 7j</div>
+            <div className="text-2xl font-bold text-green-600">&gt; 7j</div>
             <div className="text-sm text-green-800">Standard</div>
           </div>
         </div>

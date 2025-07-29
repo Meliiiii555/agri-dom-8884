@@ -237,7 +237,6 @@ export function DocumentVersionHistory({ type = 'both' }: DocumentVersionHistory
             />
           </div>
 
-
         </CardContent>
       </Card>
 

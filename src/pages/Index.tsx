@@ -46,8 +46,7 @@ const Index = () => {
 
   // Navigation with browser history
   const handleSectionChange = useCallback((newSection: string) => {
-    console.log('Attempting to navigate to section:', newSection);
-    
+
     // Vérifier que la section est valide et ne contient pas d'URL externe
     if (typeof newSection !== 'string' || newSection.includes('http://') || newSection.includes('https://')) {
       console.warn(`Section invalide ou URL externe détectée: ${newSection}`);
@@ -61,7 +60,7 @@ const Index = () => {
         } else {
           navigate(`/${newSection}`, { replace: false });
         }
-        console.log('Successfully navigated to section:', newSection);
+
       } catch (error) {
         console.error('Navigation error:', error);
       }
@@ -72,7 +71,7 @@ const Index = () => {
 
   useEffect(() => {
     const handleNavigateToSection = (event: CustomEvent) => {
-      console.log('Navigation event received:', event.detail);
+
       const targetSection = event.detail;
       
       // Gérer les redirections spéciales vers Alimentation de la Banque de Données
@@ -149,7 +148,7 @@ const Index = () => {
   // Fonction de refresh pour l'auto-refresh
   const handleRefresh = useCallback(() => {
     setRefreshTrigger(prev => prev + 1);
-    console.log('Page refreshed via auto-refresh');
+
   }, []);
 
   // Props mémorisées pour éviter les re-rendus inutiles
@@ -196,8 +195,6 @@ const Index = () => {
         </div>
 
         <BreadcrumbNavigation {...breadcrumbProps} />
-
-
 
         {/* Main Content avec landmark ARIA */}
         <main id="main-content" className="flex-grow bg-gray-50" role="main" aria-label="Contenu principal">

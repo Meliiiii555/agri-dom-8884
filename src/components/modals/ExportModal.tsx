@@ -25,7 +25,7 @@ export function ExportModal({ isOpen, onClose, data, filename }: ExportModalProp
   });
 
   const handleExport = () => {
-    console.log('Exporting data:', { data, config: exportConfig });
+
     // Ici, vous implémenteriez la logique d'export réelle
     onClose();
   };

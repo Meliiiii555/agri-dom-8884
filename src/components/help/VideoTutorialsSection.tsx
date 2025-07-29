@@ -255,7 +255,7 @@ export function VideoTutorialsSection() {
                   size="sm" 
                   className="w-full mt-3"
                   onClick={() => {
-                    console.log('Starting playlist:', playlist.title);
+
                     window.dispatchEvent(new CustomEvent('start-playlist', { 
                       detail: { playlistId: playlist.id }
                     }));

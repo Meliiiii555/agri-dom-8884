@@ -37,13 +37,10 @@ export function LegalTextsSearchActions({
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [isSortModalOpen, setIsSortModalOpen] = useState(false);
 
-
-  
   const handleApprovalQueueClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log('File d\'approbation clicked - redirection vers Alimentation de la Banque de Données');
-    
+
     // Dispatcher un événement pour naviguer vers la section d'alimentation
     const event = new CustomEvent('navigate-to-section', {
       detail: 'bank-feeding-legal-approval'
@@ -74,8 +71,7 @@ export function LegalTextsSearchActions({
   const handleAddClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log('Ajouter un texte clicked - redirection vers Alimentation de la Banque de Données');
-    
+
     // Dispatcher un événement pour naviguer vers la section d'alimentation
     const event = new CustomEvent('navigate-to-section', {
       detail: 'bank-feeding-legal-enrichment'
@@ -130,7 +126,7 @@ export function LegalTextsSearchActions({
         isOpen={isFilterModalOpen}
         onClose={() => setIsFilterModalOpen(false)}
         onApplyFilters={(filters) => {
-          console.log('✅ Simple Filter Applied:', filters);
+
           // Convertir SimpleFilterOptions vers FilterOptions
           const convertedFilters: FilterOptions = {
             types: filters.type ? [filters.type] : [],
@@ -153,7 +149,7 @@ export function LegalTextsSearchActions({
         isOpen={isSortModalOpen}
         onClose={() => setIsSortModalOpen(false)}
         onApplySort={(sort) => {
-          console.log('✅ Simple Sort Applied:', sort);
+
           handleSortApplied(sort as SortOption);
         }}
       />

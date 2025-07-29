@@ -229,6 +229,5 @@ export function installSpecializedHandlers() {
     handleAddToProcedures,
     handleExportTemplate
   };
-  
-  console.log('🔧 Handlers spécialisés installés dans le scope global');
+
 }

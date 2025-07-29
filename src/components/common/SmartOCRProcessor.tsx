@@ -24,8 +24,7 @@ export function SmartOCRProcessor({
   const { mapOCRDataToForm, getFormTemplateWithNomenclature } = useNomenclatureData();
 
   const handleTextExtracted = (text: string) => {
-    console.log('🔍 [SmartOCRProcessor] Texte OCR extrait:', text.substring(0, 200) + '...');
-    
+
     // Détecter le type de document avec patterns améliorés
     const lowerText = text.toLowerCase();
     const isLegalDocument = lowerText.includes('décret') || lowerText.includes('arrêté') || 
@@ -48,33 +47,26 @@ export function SmartOCRProcessor({
       const mappedProcedureData = mapOCRDataToForm(procedureData, 'procedure');
       parsedData = { documentType: 'procedure', formData: mappedProcedureData };
     }
-    
-    console.log('📊 [SmartOCRProcessor] Données parsées et mappées:', parsedData);
-    
+
     setExtractedData(parsedData);
     setShowScanner(false);
   };
 
   const handleValidateAndUse = () => {
-    console.log('✅ [SmartOCRProcessor] Validation et utilisation des données:', extractedData);
+
     if (extractedData) {
-      console.log('📤 [SmartOCRProcessor] Envoi des données vers le formulaire parent');
-      console.log('🔍 [SmartOCRProcessor] Type de document:', extractedData.documentType);
-      console.log('📝 [SmartOCRProcessor] Données formulaire:', extractedData.formData);
-      console.log('📊 [SmartOCRProcessor] Nombre de champs dans formData:', Object.keys(extractedData.formData).length);
-      console.log('🏷️ [SmartOCRProcessor] Champs disponibles:', Object.keys(extractedData.formData).join(', '));
-      
+
       // Appel de la fonction callback
       try {
         onFormDataExtracted(extractedData);
-        console.log('✅ [SmartOCRProcessor] Callback onFormDataExtracted appelé avec succès');
+
       } catch (error) {
         console.error('❌ [SmartOCRProcessor] Erreur lors de l\'appel du callback:', error);
       }
       
       // Fermer le scanner après un petit délai pour permettre au parent de traiter
       if (onClose) {
-        console.log('🔒 [SmartOCRProcessor] Fermeture du scanner dans 100ms');
+
         setTimeout(() => {
           onClose();
         }, 100);

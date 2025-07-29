@@ -73,7 +73,7 @@ export function AddLegalTextForm({ isOpen, onClose }: AddLegalTextFormProps) {
   };
 
   const handleOCRDataExtracted = (data: Record<string, unknown>) => {
-    console.log('🎯 Données OCR reçues:', data);
+
     setExtractedData(data);
     setFormData(data);
     setShowOCRProcessor(false);
@@ -82,8 +82,7 @@ export function AddLegalTextForm({ isOpen, onClose }: AddLegalTextFormProps) {
   };
 
   const handleWorkflowApprove = (approvedData: Record<string, unknown>) => {
-    console.log('✅ Document approuvé:', approvedData);
-    
+
     // Enregistrement final dans le système
     toast({
       title: "✅ Texte juridique enregistré",
@@ -101,7 +100,7 @@ export function AddLegalTextForm({ isOpen, onClose }: AddLegalTextFormProps) {
   };
 
   const handleWorkflowReject = (reason: string) => {
-    console.log('❌ Document rejeté:', reason);
+
     setShowWorkflow(false);
     setCurrentTab('form');
     
@@ -113,7 +112,7 @@ export function AddLegalTextForm({ isOpen, onClose }: AddLegalTextFormProps) {
   };
 
   const handleWorkflowRequestChanges = (changes: string) => {
-    console.log('🔄 Modifications demandées:', changes);
+
     setShowWorkflow(false);
     setCurrentTab('form');
     
@@ -147,8 +146,7 @@ export function AddLegalTextForm({ isOpen, onClose }: AddLegalTextFormProps) {
     }
 
     // Enregistrement direct pour les saisies manuelles
-    console.log('Données du formulaire à enregistrer:', formData);
-    
+
     toast({
       title: "Succès",
       description: "Le texte juridique a été ajouté avec succès",

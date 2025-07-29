@@ -69,7 +69,7 @@ export function NavigationMenu({ onSectionChange, activeSection, isMobile = fals
                         activeSection === subItem.section && "bg-green-50 text-green-700 font-medium border border-green-200"
                       )}
                       onClick={() => {
-                        console.log('Clicking OCR submenu item:', subItem.section, subItem.label);
+
                         onSectionChange(subItem.section);
                       }}
                     >

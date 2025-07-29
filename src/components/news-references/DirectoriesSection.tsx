@@ -208,8 +208,7 @@ export function DirectoriesSection() {
   ];
 
   const handleAdd = (type: string) => {
-    console.log(`Opening add form for: ${type}`);
-    
+
     const event = new CustomEvent('open-library-form', {
       detail: { resourceType: 'directory', category: type }
     });
@@ -217,8 +216,7 @@ export function DirectoriesSection() {
   };
 
   const handleEnrich = (type: string) => {
-    console.log(`Opening enrichment for: ${type}`);
-    
+
     const event = new CustomEvent('open-modal', {
       detail: {
         type: 'import',
@@ -332,7 +330,7 @@ export function DirectoriesSection() {
               className="w-full mt-2"
               onClick={() => {
                 // Ouvrir modal avec détails complets
-                console.log('Ouvrir modal détaillé pour:', directory.name);
+
               }}
             >
               Voir les détails complets

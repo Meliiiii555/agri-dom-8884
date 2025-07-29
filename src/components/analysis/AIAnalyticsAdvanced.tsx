@@ -78,67 +78,7 @@ export function AIAnalyticsAdvanced() {
     <div className="space-y-6">
       <TabFormField
         placeholder="Analyser les métriques IA..."
-        onSearch={(query) => console.log('Recherche analytics IA:', query)}
-        onAdd={() => console.log('Nouvelle analyse IA')}
-        onFilter={() => console.log('Filtrer analyses')}
-        onSort={() => console.log('Trier analyses')}
-        onExport={() => console.log('Exporter analyses')}
-        onRefresh={() => console.log('Actualiser analytics')}
-        showActions={true}
-      />
-
-      {/* Métriques clés */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {aiMetrics.map((metric, index) => (
-          <Card key={index} className="hover:shadow-md transition-shadow">
-            <CardContent className="pt-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600">{metric.title}</p>
-                  <p className="text-2xl font-bold mt-2">{metric.value}</p>
-                  <div className="flex items-center mt-2">
-                    <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
-                    <span className="text-sm font-medium text-green-600">
-                      {metric.change}
-                    </span>
-                    <span className="text-sm text-gray-500 ml-1">vs période précédente</span>
-                  </div>
-                </div>
-                <div className="p-3 rounded-full bg-gray-50">
-                  <metric.icon className={`w-6 h-6 ${metric.color}`} />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      {/* Contrôles et filtres */}
-      <Card>
-        <CardHeader>
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <CardTitle className="flex items-center gap-2">
-              <Brain className="w-5 h-5 text-blue-600" />
-              Tableau de bord Analytics IA
-            </CardTitle>
-            <div className="flex flex-wrap gap-2">
-              <select
-                value={selectedPeriod}
-                onChange={(e) => setSelectedPeriod(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md text-sm"
-              >
-                {periodOptions.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-              <Button 
-                variant="outline" 
-                size="sm"
-                onClick={() => {
-                  console.log('Opening advanced filters');
-                  window.dispatchEvent(new CustomEvent('show-advanced-filters'));
+        onSearch={(query) =>
                 }}
               >
                 <Filter className="w-4 h-4 mr-2" />
@@ -148,7 +88,7 @@ export function AIAnalyticsAdvanced() {
                 variant="outline" 
                 size="sm"
                 onClick={() => {
-                  console.log('Refreshing analytics data');
+
                   window.dispatchEvent(new CustomEvent('refresh-analytics'));
                 }}
               >
@@ -159,7 +99,7 @@ export function AIAnalyticsAdvanced() {
                 variant="outline" 
                 size="sm"
                 onClick={() => {
-                  console.log('Exporting analytics data');
+
                   window.dispatchEvent(new CustomEvent('export-analytics'));
                 }}
               >

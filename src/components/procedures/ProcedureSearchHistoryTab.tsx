@@ -229,7 +229,7 @@ export function ProcedureSearchHistoryTab() {
 
   const handleCompareVersions = () => {
     if (selectedVersions.length >= 2) {
-      console.log('Comparaison des recherches:', selectedVersions);
+
     }
   };
 

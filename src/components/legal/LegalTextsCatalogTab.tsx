@@ -64,21 +64,21 @@ export function LegalTextsCatalogTab({ onAddLegalText, onOpenApprovalQueue }: Le
 
   const handleFilterChange = (newFilters: { type?: string; status?: string }) => {
     setFilters(newFilters);
-    console.log('Filters changed:', newFilters);
+
   };
 
   const handleFiltersApplied = (filters: FilterOptions) => {
     setCurrentFilters(filters);
-    console.log('✅ Advanced filters applied:', filters);
+
   };
 
   const handleSortApplied = (sort: SortOption) => {
     setCurrentSort(sort);
-    console.log('✅ Sort applied:', sort);
+
   };
 
   const handleOpenApprovalQueue = () => {
-    console.log('Opening approval queue...');
+
     if (onOpenApprovalQueue) {
       onOpenApprovalQueue();
     }
@@ -86,7 +86,7 @@ export function LegalTextsCatalogTab({ onAddLegalText, onOpenApprovalQueue }: Le
 
   const handleTabSearch = (query: string) => {
     setSearchTerm(query);
-    console.log('Tab search:', query);
+
   };
 
   // Pagination

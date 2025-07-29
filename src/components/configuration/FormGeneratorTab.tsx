@@ -316,10 +316,10 @@ export function FormGeneratorTab() {
                   setActiveTab("generator");
                 }}
                 onAddToLegalTexts={(form) => {
-                  console.log('Ajout au catalogue des textes juridiques:', form);
+
                 }}
                 onAddToProcedures={(form) => {
-                  console.log('Ajout au catalogue des procédures:', form);
+
                 }}
               />
             </TabsContent>
@@ -343,10 +343,10 @@ export function FormGeneratorTab() {
                   setActiveTab("generator");
                 }} 
                 onAddToLegalTexts={(template) => {
-                  console.log('Ajout au catalogue des textes juridiques:', template);
+
                 }}
                 onAddToProcedures={(template) => {
-                  console.log('Ajout au catalogue des procédures:', template);
+
                 }}
               />
             </TabsContent>

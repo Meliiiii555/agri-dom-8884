@@ -1,8 +1,7 @@
 
 export function useModalActions() {
   const handleFilter = (type: string) => {
-    console.log('Filtre appliqué:', type);
-    
+
     // Toast d'information
     const toastEvent = new CustomEvent('show-toast', {
       detail: {
@@ -24,7 +23,7 @@ export function useModalActions() {
   };
 
   const handleComparison = (items: Record<string, unknown>[]) => {
-    console.log('Comparaison des éléments:', items);
+
     const event = new CustomEvent('open-modal', {
       detail: {
         type: 'comparison',
@@ -36,7 +35,7 @@ export function useModalActions() {
   };
 
   const handleFeedback = (type: 'error' | 'feedback' | 'testimonial', context?: string) => {
-    console.log('Feedback:', type, context);
+
     const event = new CustomEvent('open-modal', {
       detail: {
         type: 'feedback',
@@ -49,7 +48,7 @@ export function useModalActions() {
   };
 
   const handleAnalysis = (type: string, data: Record<string, unknown>[]) => {
-    console.log('Analyse déclenchée:', type, data);
+
     const event = new CustomEvent('open-modal', {
       detail: {
         type: 'analysis',
@@ -61,7 +60,7 @@ export function useModalActions() {
   };
 
   const handleManagement = (entityType: string) => {
-    console.log('Gestion d\'entité:', entityType);
+
     const event = new CustomEvent('open-modal', {
       detail: {
         type: 'management',

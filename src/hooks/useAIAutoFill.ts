@@ -17,8 +17,7 @@ export function useAIAutoFill() {
   }, []);
 
   const handleDataGenerated = useCallback((data: Record<string, unknown>) => {
-    console.log('AI Generated data:', data);
-    
+
     // Dispatch custom event with generated data
     const event = new CustomEvent('ai-data-generated', {
       detail: { data, context }

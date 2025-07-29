@@ -134,7 +134,7 @@ export function PerformanceAnalysis() {
                   variant="outline" 
                   className="flex-1"
                   onClick={() => {
-                    console.log('Export PDF déclenché');
+
                     // Simulation d'export PDF
                     const link = document.createElement('a');
                     link.href = 'data:application/pdf;base64,JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovT3V0bGluZXMgMiAwIFIKL1BhZ2VzIDMgMCBSCj4+CmVuZG9iago=';
@@ -149,7 +149,7 @@ export function PerformanceAnalysis() {
                   variant="outline" 
                   className="flex-1"
                   onClick={() => {
-                    console.log('Export Excel déclenché');
+
                     const csvContent = "data:text/csv;charset=utf-8," + 
                       "Mois,Performance,Utilisation,Satisfaction,Conformité\n" +
                       performanceData.map(row => `${row.month},${row.performance},${row.utilisation},${row.satisfaction},${row.conformité}`).join("\n");
@@ -166,7 +166,7 @@ export function PerformanceAnalysis() {
                   variant="outline" 
                   className="flex-1"
                   onClick={() => {
-                    console.log('Export JSON déclenché');
+
                     const jsonData = JSON.stringify(performanceData, null, 2);
                     const blob = new Blob([jsonData], { type: 'application/json' });
                     const url = URL.createObjectURL(blob);

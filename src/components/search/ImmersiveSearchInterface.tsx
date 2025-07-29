@@ -29,21 +29,21 @@ export function ImmersiveSearchInterface() {
   // Fonction de recherche sémantique
   const handleSemanticSearch = (query: string) => {
     // Simulation d'une vraie recherche sémantique
-    console.log('Recherche sémantique:', query);
+
     // Ici on pourrait implémenter une vraie recherche
   };
 
   // Fonction de recherche par mots-clés
   const handleKeywordSearch = (query: string) => {
     // Simulation d'une vraie recherche par mots-clés
-    console.log('Recherche mots-clés:', query);
+
     // Ici on pourrait implémenter une vraie recherche
   };
 
   // Fonction de recherche IA avancée
   const handleAISearch = (query: string) => {
     // Simulation d'une vraie recherche IA
-    console.log('Recherche IA:', query);
+
     // Ici on pourrait implémenter une vraie recherche
   };
 

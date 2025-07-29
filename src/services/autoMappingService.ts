@@ -119,8 +119,7 @@ class AutoMappingService {
     extractedData: ExtractedData, 
     formType: 'legal-text' | 'procedure' | 'general'
   ): Promise<MappingResult> {
-    console.log('🎯 Début du mapping automatique des données extraites');
-    
+
     const schema = this.getSchema(formType);
     const mappedFields: FieldMapping[] = [];
     const unmappedData: string[] = [];
@@ -149,8 +148,6 @@ class AutoMappingService {
 
     // Étape 3: Calcul de la confiance globale
     const confidence = this.calculateMappingConfidence(mappedFields, schema.fields);
-
-    console.log(`✅ Mapping terminé: ${mappedFields.length} champs mappés, ${suggestions.length} suggestions`);
 
     return {
       mappedFields,

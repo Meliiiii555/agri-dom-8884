@@ -82,8 +82,7 @@ export interface ExtractedMappingData {
  */
 export class TextTableExtractor {
   async extractFromPDF(file: File): Promise<{ text: string; tables: ExtractedTable[]; zones: ExtractedTextZone[] }> {
-    console.log('🔄 [Étape 1] Extraction du texte et des tables...');
-    
+
     try {
       // Extraction du texte principal avec PDF.js
       const { text } = await extractTextFromPDF(file);
@@ -91,13 +90,7 @@ export class TextTableExtractor {
       // Simulation de la détection des zones et tables selon l'algorithme annexe
       const zones = await this.detectTextZones(text);
       const tables = await this.detectTables(text);
-      
-      console.log('✅ [Étape 1] Extraction terminée:', {
-        textLength: text.length,
-        zonesCount: zones.length,
-        tablesCount: tables.length
-      });
-      
+
       return { text, tables, zones };
       
     } catch (error) {
@@ -176,8 +169,7 @@ export class TextTableExtractor {
  */
 export class DataStructurer {
   structureData(text: string, zones: ExtractedTextZone[]): StructuredPublication {
-    console.log('🔄 [Étape 2] Structuration des données...');
-    
+
     const structured: StructuredPublication = {
       type: this.detectDocumentType(text),
       titre: this.extractTitle(text, zones),
@@ -193,13 +185,7 @@ export class DataStructurer {
       signataires: this.extractSignatories(text),
       journalOfficiel: this.extractJournalInfo(text)
     };
-    
-    console.log('✅ [Étape 2] Structuration terminée:', {
-      type: structured.type,
-      articlesCount: structured.articles.length,
-      referencesCount: structured.references.length
-    });
-    
+
     return structured;
   }
 
@@ -380,8 +366,7 @@ export class DataStructurer {
  */
 export class NLPProcessor {
   async extractEntities(text: string, structuredData: StructuredPublication): Promise<LegalEntity[]> {
-    console.log('🔄 [Étape 3] Traitement NLP et extraction d\'entités...');
-    
+
     const entities: LegalEntity[] = [];
     
     // Simulation d'extraction d'entités avec patterns algériens
@@ -391,12 +376,7 @@ export class NLPProcessor {
     entities.push(...this.extractNumberEntities(text));
     entities.push(...this.extractGeographicEntities(text));
     entities.push(...this.extractLegalReferences(text));
-    
-    console.log('✅ [Étape 3] Extraction d\'entités terminée:', {
-      entitiesCount: entities.length,
-      types: [...new Set(entities.map(e => e.type))]
-    });
-    
+
     return entities;
   }
 
@@ -544,8 +524,7 @@ export class FormMapper {
     entities: LegalEntity[],
     documentType: 'legal' | 'procedure'
   ): Record<string, unknown> {
-    console.log('🔄 [Étape 4] Mapping vers les formulaires...');
-    
+
     const baseMapping = this.getBaseMapping(structuredData, documentType);
     const entityMapping = this.mapEntities(entities);
     const contextMapping = this.getContextualMapping(structuredData, documentType);
@@ -555,12 +534,7 @@ export class FormMapper {
       ...entityMapping,
       ...contextMapping
     };
-    
-    console.log('✅ [Étape 4] Mapping terminé:', {
-      fieldsCount: Object.keys(mappedFields).length,
-      documentType
-    });
-    
+
     return mappedFields;
   }
 
@@ -695,7 +669,7 @@ export class AdvancedOCRService {
   private formMapper = new FormMapper();
 
   async processDocument(file: File): Promise<ExtractedMappingData> {
-    console.log('🚀 Début du traitement OCR avancé pour:', file.name);
+
     const startTime = Date.now();
     const processingSteps: string[] = [];
     
@@ -723,8 +697,7 @@ export class AdvancedOCRService {
       const confidence = this.calculateOverallConfidence(structuredData, entities, mappedFields);
       
       const processingTime = Date.now() - startTime;
-      console.log(`✅ Traitement OCR avancé terminé en ${processingTime}ms avec confiance: ${Math.round(confidence * 100)}%`);
-      
+
       return {
         documentType,
         structuredData,
@@ -777,8 +750,6 @@ export class LocalAlgerianOCRService {
   async initialize(): Promise<void> {
     if (this.isInitialized) return;
 
-    console.log('🔧 [Local OCR] Initialisation des services locaux...');
-
     try {
       // Initialiser Tesseract.js en local (français + arabe)
       await this.initializeTesseract();
@@ -787,7 +758,7 @@ export class LocalAlgerianOCRService {
       await this.initializeLocalNLP();
       
       this.isInitialized = true;
-      console.log('✅ [Local OCR] Tous les services locaux initialisés');
+
     } catch (error) {
       console.error('❌ [Local OCR] Erreur d\'initialisation:', error);
       throw error;
@@ -799,9 +770,7 @@ export class LocalAlgerianOCRService {
     const { createWorker } = await import('tesseract.js');
     
     this.tesseractWorker = await createWorker('fra+ara', 1, {
-      logger: m => console.log('📖 [Tesseract]', m),
-      errorHandler: err => console.error('❌ [Tesseract]', err)
-    });
+      logger: m =>
 
     // Configuration pour les documents juridiques algériens
     await this.tesseractWorker.setParameters({
@@ -810,7 +779,6 @@ export class LocalAlgerianOCRService {
       tessedit_pageseg_mode: '1' // Mode page complète
     });
 
-    console.log('✅ [Tesseract] Initialisé avec support FR+AR local');
   }
 
   private async initializeLocalNLP(): Promise<void> {
@@ -838,7 +806,7 @@ export class LocalAlgerianOCRService {
     };
 
     this.nlpModel = nlp.default.extend(algerianLegalPlugin);
-    console.log('✅ [NLP Local] Modèle compromise.js étendu pour l\'algérien');
+
   }
 
   /**
@@ -858,8 +826,6 @@ export class LocalAlgerianOCRService {
       await this.initialize();
     }
 
-    console.log('🇩🇿 [Local OCR] Début extraction avec outils locaux...');
-
     try {
       // Étape 1: Extraction avec PyMuPDF local (via PDF.js comme fallback)
       const { pdfText, pages } = await this.extractWithLocalPyMuPDF(file);
@@ -878,9 +844,7 @@ export class LocalAlgerianOCRService {
       const confidence = this.calculateLocalConfidence(text, zones, tables);
       
       const processingTime = Date.now() - startTime;
-      
-      console.log('✅ [Local OCR] Extraction terminée en', processingTime, 'ms');
-      
+
       return {
         text: text || pdfText,
         tables,
@@ -900,8 +864,7 @@ export class LocalAlgerianOCRService {
    * Extraction PyMuPDF locale (via WebAssembly si disponible, sinon PDF.js)
    */
   private async extractWithLocalPyMuPDF(file: File): Promise<{ pdfText: string; pages: ImageData[] }> {
-    console.log('📄 [PyMuPDF Local] Extraction du PDF...');
-    
+
     try {
       // Tentative d'utilisation de PyMuPDF via WebAssembly (si disponible)
       if (typeof window !== 'undefined' && (window as any).PyMuPDF) {
@@ -943,8 +906,7 @@ export class LocalAlgerianOCRService {
   }
 
   private async extractWithLocalPDFJS(file: File): Promise<{ pdfText: string; pages: ImageData[] }> {
-    console.log('📄 [PDF.js Local] Extraction...');
-    
+
     const arrayBuffer = await file.arrayBuffer();
     const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
     
@@ -978,13 +940,11 @@ export class LocalAlgerianOCRService {
    * Traitement OCR avec Tesseract.js local
    */
   private async processWithLocalTesseract(pages: ImageData[]): Promise<string[]> {
-    console.log('🔍 [Tesseract Local] OCR en cours...');
-    
+
     const results: string[] = [];
     
     for (let i = 0; i < pages.length; i++) {
-      console.log(`📖 [Tesseract] Page ${i + 1}/${pages.length}`);
-      
+
       // Conversion ImageData vers Canvas pour Tesseract
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d')!;
@@ -994,8 +954,7 @@ export class LocalAlgerianOCRService {
       
       // OCR avec Tesseract.js
       const { data: { text, confidence } } = await this.tesseractWorker.recognize(canvas);
-      
-      console.log(`✅ [Tesseract] Page ${i + 1} - Confiance: ${Math.round(confidence)}%`);
+
       results.push(text);
     }
     
@@ -1006,8 +965,7 @@ export class LocalAlgerianOCRService {
    * Analyse NLP locale avec compromise.js étendu
    */
   private async analyzeWithLocalNLP(text: string, zones: ExtractedTextZone[]): Promise<StructuredPublication> {
-    console.log('🧠 [NLP Local] Analyse linguistique...');
-    
+
     const doc = this.nlpModel(text);
     
     // Extraction d'entités avec le modèle local étendu
@@ -1018,14 +976,7 @@ export class LocalAlgerianOCRService {
       references: doc.match('#LegalReference').out('array'),
       numbers: doc.match('#Value').out('array')
     };
-    
-    console.log('📊 [NLP] Entités détectées:', {
-      institutions: entities.institutions.length,
-      legalTerms: entities.legalTerms.length,
-      dates: entities.dates.length,
-      references: entities.references.length
-    });
-    
+
     // Structuration avec le nouveau analyseur
     const structurer = new AlgerianLegalDataStructurer();
     return structurer.structureData(text, zones);
@@ -1124,7 +1075,7 @@ export class LocalAlgerianOCRService {
       this.tesseractWorker = null;
     }
     this.isInitialized = false;
-    console.log('🧹 [Local OCR] Services nettoyés');
+
   }
 }
 
@@ -1135,16 +1086,14 @@ export class LocalLegalMappingService {
   private localModels: Map<string, any> = new Map();
   
   async initializeLocalModels(): Promise<void> {
-    console.log('🤖 [Local Mapping] Chargement des modèles locaux...');
-    
+
     try {
       // Charger un modèle de relations léger local (simulation d'un LegalBERT local)
       await this.loadLocalRelationModel();
       
       // Charger les schémas de mapping algériens
       await this.loadAlgerianMappingSchemas();
-      
-      console.log('✅ [Local Mapping] Modèles locaux chargés');
+
     } catch (error) {
       console.error('❌ [Local Mapping] Erreur de chargement:', error);
       throw error;
@@ -1208,8 +1157,7 @@ export class LocalLegalMappingService {
     structuredData: StructuredPublication,
     formType: 'legal-text' | 'procedure'
   ): Promise<Record<string, unknown>> {
-    console.log('🔗 [Local Mapping] Mapping vers formulaire...');
-    
+
     const schema = this.localModels.get('schemas')?.[formType];
     if (!schema) {
       throw new Error(`Schéma non trouvé pour le type: ${formType}`);
@@ -1232,8 +1180,7 @@ export class LocalLegalMappingService {
     // Validation locale
     const validation = this.validateLocalMapping(mappedData, formType);
     mappedData['_validation'] = validation;
-    
-    console.log('✅ [Local Mapping] Mapping terminé:', Object.keys(mappedData).length, 'champs');
+
     return mappedData;
   }
 

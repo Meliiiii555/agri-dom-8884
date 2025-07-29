@@ -38,7 +38,7 @@ export function RealtimeAnnotationsTab() {
   ];
 
   const handleSaveAnnotation = (annotationData: Record<string, unknown>) => {
-    console.log('Nouvelle annotation créée:', annotationData);
+
     // Ici on ajouterait la logique pour sauvegarder l'annotation
   };
 

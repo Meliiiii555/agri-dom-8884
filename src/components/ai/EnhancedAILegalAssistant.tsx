@@ -18,8 +18,6 @@ export function EnhancedAILegalAssistant() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-
-
   return (
     <div className="max-w-7xl mx-auto space-y-8">
       <UnifiedSectionHeader

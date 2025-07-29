@@ -44,7 +44,7 @@ export function AlertsConfigurationModal({ isOpen, onClose }: AlertsConfiguratio
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Configuration alertes:', { globalSettings, channelSettings, templates });
+
     onClose();
   };
 
