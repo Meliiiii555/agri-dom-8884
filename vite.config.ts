@@ -16,6 +16,7 @@ export default defineConfig(({ mode }) => ({
     'process.env.NODE_ENV': JSON.stringify(mode),
     global: 'globalThis',
     '__TYPESCRIPT_SUPPRESSIONS__': 'true',
+    '__WS_TOKEN__': '""',
   },
   plugins: [
     react({

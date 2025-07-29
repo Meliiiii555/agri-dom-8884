@@ -27,6 +27,10 @@
     <title>Dalil.dz - Plateforme Algérienne de Veille Juridique</title>
   </head>
   <body>
+    <script>
+      // Fix for Vite WebSocket token issue
+      window.__WS_TOKEN__ = window.__WS_TOKEN__ || '';
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
