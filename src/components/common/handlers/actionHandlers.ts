@@ -3,21 +3,21 @@ import { ActionType } from '../types/actionTypes';
 
 // Simple action handlers with full suppressions
 export const actionHandlers = {
-  handlePDFView: (item, data) => console.log('PDF View:', item, data),
-  handleShare: (item, data) => console.log('Share:', item, data),
-  handleFilter: (item, data) => console.log('Filter:', item, data),
-  handleDownload: (item, data) => console.log('Download:', item, data),
-  handleComparison: (items) => console.log('Compare:', items),
-  handleFeedback: (item) => console.log('Feedback:', item),
-  handleImport: (data) => console.log('Import:', data),
-  handleExport: (data) => console.log('Export:', data),
-  handleExamine: (item) => console.log('Examine:', item),
-  handleReject: (item) => console.log('Reject:', item),
-  handleApprove: (item) => console.log('Approve:', item),
-  handleLike: (item) => console.log('Like:', item),
-  handleAddLegalText: (data) => console.log('Add Legal Text:', data),
-  handleManagement: (type, data) => console.log('Management:', type, data),
-  handleGenericAction: (type, item) => console.log('Generic Action:', type, item)
+  handlePDFView: (item, data) => {/* PDF View handler */},
+  handleShare: (item, data) => {/* Share handler */},
+  handleFilter: (item, data) => {/* Filter handler */},
+  handleDownload: (item, data) => {/* Download handler */},
+  handleComparison: (items) => {/* Compare handler */},
+  handleFeedback: (item) => {/* Feedback handler */},
+  handleImport: (data) => {/* Import handler */},
+  handleExport: (data) => {/* Export handler */},
+  handleExamine: (item) => {/* Examine handler */},
+  handleReject: (item) => {/* Reject handler */},
+  handleApprove: (item) => {/* Approve handler */},
+  handleLike: (item) => {/* Like handler */},
+  handleAddLegalText: (data) => {/* Add Legal Text handler */},
+  handleManagement: (type, data) => {/* Management handler */},
+  handleGenericAction: (type, item) => {/* Generic Action handler */}
 };
 
 // Wrapper function for action execution
